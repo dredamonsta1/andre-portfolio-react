@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
+
+
+
+.lineUnderCircle {
+    height: 100px;
+    border-left: solid var(--line) 1px;
+    margin-left: 50%;
+}
+
+.innerParagraph {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top: solid var(--line) 1px;
+    border-bottom: solid var(--line) 1px;
+    padding: 48px 32px;
+    text-transform: uppercase;
+    font-family: 'Nunito',
+    sans-serif;
+}
+
+p {
+    font-size: 13px;
+}
+
+.downlineBottom {
+    height: 100px;
+    border-left: solid var(--line) /* green*/ 1px;
+    margin-left: 50%;
+}
