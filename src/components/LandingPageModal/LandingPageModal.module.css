@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
+
+/* ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0px;
+}
+
+.list-work {
+    display: flex;
+    text-transform: uppercase;
+    align-self: center;
+    justify-content: space-evenly;
+    font-family: 'Nunito',
+    sans-serif;
+    font-weight: 200;
+    font-size: 12px;  
+}
+
+ul.horizontal-list {
+    list-style: none;
+    padding-top: 0px;
+}
+
+ul.horizontal-list li {
+    display: inline;   
+} */
+
+.intro{
+    border: solid var(--line) 1px;
+    padding: 20px 25px 20px 25px;
+    border-radius: 4px 0 0 4px;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(220, 20, 60, 0);
+    cursor: pointer;
+}
+
+.work {
+    border-top: solid var(--line) 1px;
+    border-right: solid var(--line) 1px;
+    border-bottom: solid var(--line) 1px;
+    padding: 20px 39px 20px 38px;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(220, 20, 60, 0);
+    cursor: pointer;
+}
+
+.about {
+    border-top: solid var(--line) 1px;
+    border-right: solid var(--line) 1px;
+    border-bottom: solid var(--line) 1px;
+    padding: 20px 27px 20px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(220, 20, 60, 0);
+    cursor: pointer;
+}
+
+.contact {
+    border-top: solid var(--line) 1px;
+    border-right: solid var(--line) 1px;
+    border-bottom: solid var(--line) 1px;
+    padding: 20px 25px 20px 25px;
+    border-radius: 0 4px 4px 0;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(220, 20, 60, 0);
+    cursor: pointer;
+}
+
+.modalBtnContainer {
+    padding-left: 12.8%;
+}

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
+
+
+
+.listWork {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    /* align-self: center; */
+    /* justify-content: space-evenly; */
+    font-family: 'Nunito',
+    sans-serif;
+    font-weight: 200;
+    font-size: 12px;  
+    /* border-radius: 25px; */
+
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: black;
+    transform: translateY(-1px);
+    transition: all 0.5s ease;
+    /* opacity: .7; */
+}
+
+
+ /* .modal {
+     display: flex;
+     justify-content: center;
+     padding: 2rem;
+
+ }  */
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    width: calc(25rem + 16vw);
+    height: 630px;
+    padding: 0;
+    /* padding: 20px 25px 20px 25px; */
+    border-radius: 25px;
+    /* border: 0; */
+    /* margin: 0; */
+    text-decoration: none;
+    color: white;
+    background-color: rgba(220, 20, 60, 0);
+    /* cursor: pointer; */
+    /* background-color: black; */
+    transition: all 0.5s ease;
+    opacity: 3;
+}
+
+/* .modalBg {
+    display: flex;
+    justify-content: center; */
+    /* align-items: center; */
+    /* position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    margin-top: 20px;
+    margin-left: 27.5%;
+    left: 0;
+    top: 0;
+    width: 570px;
+    height: 624px;
+    overflow: auto;
+    background-color: rbg(0,0,0);
+    background-color: rgba(0, 0,0, 0.9);
+     visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    border-radius: 5px;
+} */
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    /* border-bottom: 1px solid white; */
+    margin-bottom: 50px;
+
+}
+
+.modalTitle {
+    text-align: left;
+    /* border-bottom: 1px solid green; */
+
+
+}
+button {
+    background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+}
+
+.topClose:hover {
+    display: flex;
+    justify-self: self-end;
+    color: thistle;
+    /* left: 500px; */
+
+}
+
+/* .topClose:hover */
+
+.modalContent {
+    text-align: center;
+    padding-bottom: 50px;
+
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: end;
+
+
+}
+

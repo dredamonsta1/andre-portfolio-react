@@ -1,5 +1,10 @@
 import img from '../src/image/nyc.JPG';
-import LandingPageContainer from './components/LandigPageContainer';
+import LandingPageCircle from './components/LandingPageCircle/LandingPageCircle';
+import LandingPageContainer from './components/LandigPageContainer/LandingPageContainer';
+import LandingPageModal from './components/LandingPageModal/LandingPageModal';
+// import LandingPageFooter from './components/LandingPageFooter/LandingPageFooter';
+// import LandingPageModal
+
 import './App.css';
 
 function App() {
@@ -13,8 +18,12 @@ function App() {
       <div className="filter-shade">
         <div className="small-container">
           <LandingPageContainer />
+          <LandingPageCircle />
+          <LandingPageModal />
+          <div className="contact-icons" alt="social media icons">
+          
+          </div>
         
-        <h1>Hello World</h1>
         </div>
       </div>
     </div>

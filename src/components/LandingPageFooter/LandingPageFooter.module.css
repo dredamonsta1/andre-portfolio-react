@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
+
+
+
+.contactIcons {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+    padding-top: 25px;
+    padding-left: 0;
+    font-family: 'Nunito',
+    sans-serif;
+    text-transform: uppercase;
+    
+}
+
+.intro:hover, .intro:focus {
+    background-color: var(--opaqe);
+}
+
+.work:hover, .work:focus {
+    background-color: var(--opaqe);
+}
+
+.about:hover, .about:focus {
+    background-color: var(--opaqe);
+}
+
+.contact:hover, .contact:focus {
+    background-color: var(--opaqe);
+   
+}
