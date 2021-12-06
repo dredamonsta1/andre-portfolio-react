@@ -93,7 +93,7 @@ ul.horizontal-list li {
   display: inline;   
 }
 
-.intro:hover, .intro:focus {
+/* .intro:hover, .intro:focus {
   background-color: var(--opaqe);
 }
 
@@ -108,4 +108,9 @@ ul.horizontal-list li {
 .contact:hover, .contact:focus {
   background-color: var(--opaqe);
  
+} */
+
+
+@media screen {
+  
 }

@@ -33,7 +33,7 @@ ul.horizontal-list li {
     display: inline;   
 } */
 
-.intro{
+.intro {
     border: solid var(--line) 1px;
     padding: 20px 25px 20px 25px;
     border-radius: 4px 0 0 4px;
@@ -42,6 +42,10 @@ ul.horizontal-list li {
     background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
 }
+
+.intro:hover, .intro:focus {
+    background-color: var(--opaqe);
+  }
 
 .work {
     border-top: solid var(--line) 1px;
@@ -54,6 +58,10 @@ ul.horizontal-list li {
     cursor: pointer;
 }
 
+.work:hover, .work:focus {
+    background-color: var(--opaqe);
+  }
+
 .about {
     border-top: solid var(--line) 1px;
     border-right: solid var(--line) 1px;
@@ -64,6 +72,10 @@ ul.horizontal-list li {
     background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
 }
+
+.about:hover, .about:focus {
+    background-color: var(--opaqe);
+  }
 
 .contact {
     border-top: solid var(--line) 1px;
@@ -76,6 +88,11 @@ ul.horizontal-list li {
     background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
 }
+
+.contact:hover, .contact:focus {
+    background-color: var(--opaqe);
+   
+  }
 
 .modalBtnContainer {
     padding-left: 12.8%;
