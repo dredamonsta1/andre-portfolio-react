@@ -68,7 +68,7 @@
     padding-left: 12.8%;
 }
 
-/* .modalBtnContainer {
+.modalBtnContainer {
     background-color: blueviolet;
 }
 
@@ -77,11 +77,11 @@
         background-color: blue;
     }
 
-} */
+}
 
-/* @media all and (min-width: 481px) {
+@media all and (min-width: 481px) {
     .modalBtnContainer {
         background-color: green;
     }
 
-} */
+}
