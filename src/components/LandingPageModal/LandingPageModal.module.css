@@ -2,36 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
-/* ul {
-    display: flex;
-}
-
-li {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 0px;
-}
-
-.list-work {
-    display: flex;
-    text-transform: uppercase;
-    align-self: center;
-    justify-content: space-evenly;
-    font-family: 'Nunito',
-    sans-serif;
-    font-weight: 200;
-    font-size: 12px;  
-}
-
-ul.horizontal-list {
-    list-style: none;
-    padding-top: 0px;
-}
-
-ul.horizontal-list li {
-    display: inline;   
-} */
 
 .intro {
     border: solid var(--line) 1px;
@@ -97,3 +67,21 @@ ul.horizontal-list li {
 .modalBtnContainer {
     padding-left: 12.8%;
 }
+
+/* .modalBtnContainer {
+    background-color: blueviolet;
+}
+
+@media all and (max-width: 480px) {
+    .modalBtnContainer {
+        background-color: blue;
+    }
+
+} */
+
+/* @media all and (min-width: 481px) {
+    .modalBtnContainer {
+        background-color: green;
+    }
+
+} */

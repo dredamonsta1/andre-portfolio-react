@@ -93,24 +93,14 @@ ul.horizontal-list li {
   display: inline;   
 }
 
-/* .intro:hover, .intro:focus {
-  background-color: var(--opaqe);
-}
 
-.work:hover, .work:focus {
-  background-color: var(--opaqe);
-}
-
-.about:hover, .about:focus {
-  background-color: var(--opaqe);
-}
-
-.contact:hover, .contact:focus {
-  background-color: var(--opaqe);
- 
+/* @media screen {
+  
 } */
 
+/* @media all and (max-width: 500px) {
+  ul {
+      color: blue;
+  }
 
-@media screen {
-  
-}
+} */
