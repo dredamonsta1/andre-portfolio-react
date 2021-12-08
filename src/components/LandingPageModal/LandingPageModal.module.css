@@ -69,13 +69,8 @@
     padding-left: 12.8%;
 }
 
-/* .modalBtnContainer {
-    background-color: blueviolet;
-} */
-
 @media all and (max-width: 517px) {
     .modalBtnContainer {
-        /* background-color: rgb(255, 136, 0); */
         contain: style layout inline-size;
         display: flex;
         align-items: center;
@@ -107,11 +102,3 @@
           } 
 
 }
-
-/* @media all and (min-width: 481px) {
-    .modalBtnContainer {
-        background-color: green;
-    }
-
-} */
-
