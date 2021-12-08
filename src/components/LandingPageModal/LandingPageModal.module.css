@@ -80,30 +80,28 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        margin-right: 13%;
+        left: 700px;
     }
 
         .intro{
             border: solid var(--line) 1px;
-            /* color: tomato; */
             border-radius: 4px 4px 4px 4px;
             width: 150px;
 
         }
         .work {
             border: solid var(--line) 1px;
-              /* color: tomato; */
               border-radius: 4px 4px 4px 4px;
               width: 150px;
           }
           .about {
             border: solid var(--line) 1px;
-              /* color: tomato; */
               border-radius: 4px 4px 4px 4px;
               width: 150px;
           }
           .contact {
             border: solid var(--line) 1px;
-              /* color: tomato; */
               border-radius: 4px 4px 4px 4px;
               width: 150px;
           } 
