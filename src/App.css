@@ -40,6 +40,13 @@ html, body {
   background-attachment: fixed;
 }
 
+/* .app-background {
+  background-image: url(./image/nyc.JPG);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+} */
+
 .app-background {
   display: flex;
   height: 100%;
@@ -47,6 +54,11 @@ html, body {
   background: rgba(0, 0,0, 0.7);
   align-items: center;
   justify-content: center;
+
+  background-image: url(./image/nyc.JPG);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
 }
 
 .filter-shade {
@@ -111,28 +123,10 @@ ul.horizontal-list li {
 
 } */
 
-
 @media all and (max-width: 517px) {
-  .modalBtnContainer {
-      background-color: red;
-      contain: inline-size;
-      /* .intro{
-          border: solid var(--line) 1px;
-          color: tomato;
-
-      }
-      .work {
-        border: solid var(--line) 1px;
-          color: tomato;
-      }
-      .about {
-        border: solid var(--line) 1px;
-          color: tomato;
-      }
-      .contact {
-        border: solid var(--line) 1px;
-          color: tomato;
-      } */
+  .app-background {
+    background-image: url(./image/nyc.JPG);
+    width: 100%;
+    height: 100%;
   }
-
 }

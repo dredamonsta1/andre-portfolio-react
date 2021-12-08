@@ -11,9 +11,9 @@ function App() {
   return (
     <div 
       className="app-background" style={{
-        backgroundImage: `url(${img})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '100%'
+        // backgroundImage: `url(${img})`,
+        // backgroundRepeat: 'no-repeat',
+        // backgroundSize: '100%'
       }}>
       <div className="filter-shade">
         <div className="small-container">
