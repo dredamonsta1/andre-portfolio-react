@@ -8,6 +8,12 @@
   --opaqe: rgb(112, 108, 108, .3);
 }
 
+/* view {
+  --name: 480px
+
+} */
+
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -104,3 +110,29 @@ ul.horizontal-list li {
   }
 
 } */
+
+
+@media all and (max-width: 517px) {
+  .modalBtnContainer {
+      background-color: red;
+      contain: inline-size;
+      /* .intro{
+          border: solid var(--line) 1px;
+          color: tomato;
+
+      }
+      .work {
+        border: solid var(--line) 1px;
+          color: tomato;
+      }
+      .about {
+        border: solid var(--line) 1px;
+          color: tomato;
+      }
+      .contact {
+        border: solid var(--line) 1px;
+          color: tomato;
+      } */
+  }
+
+}
