@@ -1,4 +1,4 @@
-import img from '../src/image/nyc.JPG';
+// import img from '../src/image/nyc.JPG';
 import LandingPageCircle from './components/LandingPageCircle/LandingPageCircle';
 import LandingPageContainer from './components/LandigPageContainer/LandingPageContainer';
 import LandingPageModal from './components/LandingPageModal/LandingPageModal';
@@ -10,11 +10,7 @@ import './App.css';
 function App() {
   return (
     <div 
-      className="app-background" style={{
-        // backgroundImage: `url(${img})`,
-        // backgroundRepeat: 'no-repeat',
-        // backgroundSize: '100%'
-      }}>
+      className="app-background">
       <div className="filter-shade">
         <div className="small-container">
         <LandingPageCircle />
