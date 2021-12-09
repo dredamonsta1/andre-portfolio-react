@@ -25,6 +25,7 @@
     background-color: black;
     transform: translateY(-1px);
     transition: all 0.5s ease;
+    border: solid 1px rgb(238, 236, 130);
     /* opacity: .7; */
 }
 
@@ -57,34 +58,13 @@
     opacity: 3;
 }
 
-/* .modalBg {
-    display: flex;
-    justify-content: center; */
-    /* align-items: center; */
-    /* position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    margin-top: 20px;
-    margin-left: 27.5%;
-    left: 0;
-    top: 0;
-    width: 570px;
-    height: 624px;
-    overflow: auto;
-    background-color: rbg(0,0,0);
-    background-color: rgba(0, 0,0, 0.9);
-     visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s;
-    border-radius: 5px;
-} */
-
 .modalHeader {
     display: flex;
     justify-content: space-between;
     position: relative;
     /* border-bottom: 1px solid white; */
     margin-bottom: 50px;
+    border: solid 1px violet;
 
 }
 
@@ -112,15 +92,25 @@ button {
 /* .topClose:hover */
 
 .modalContent {
-    text-align: center;
+    display: flex;
+    justify-content: start;
+    /* text-align: center; */
     padding-bottom: 50px;
+    border: solid 1px rgb(130, 238, 229);
 
 }
 
 .modalFooter {
     display: flex;
     justify-content: end;
+    border: solid 1px green;
+    color: indianred;
 
 
 }
 
+@media all and (max-width: 517px) {
+    .listWork {
+        background-color: tomato;
+    }
+}
