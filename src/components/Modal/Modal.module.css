@@ -22,7 +22,8 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: black;
+    /* background-color: black; */
+    background: rgba(0, 0,0, 0.7);
     transform: translateY(-1px);
     transition: all 0.5s ease;
     border: solid 15px rgb(238, 236, 130);
@@ -31,7 +32,12 @@
 
 .modal {
     display: flex;
+    flex-direction: column;
     background-color: blueviolet;
+    height: 605px;
+    width: 570px;
+    border-radius: 25px;
+    border: solid 5px red;
 }
 
 .intro {
@@ -39,7 +45,7 @@
     flex-direction: column;
     justify-content: space-between;
     
-    width: calc(25rem + 16vw);
+    /* width: calc(25rem + 16vw); */
     height: 630px;
     padding: 0;
     /* padding: 20px 25px 20px 25px; */
@@ -53,6 +59,7 @@
     /* background-color: black; */
     transition: all 0.5s ease;
     opacity: 3;
+    border: solid 5px green;
 }
 
 .modalHeader {
@@ -61,12 +68,15 @@
     position: relative;
     /* border-bottom: 1px solid white; */
     margin-bottom: 50px;
-    border: solid 1px violet;
+    border: solid 5px green;
 
 }
 
 .modalTitle {
-    text-align: left;
+    display: flex;
+    right: 800px;
+    /* align-self: center; */
+    /* text-align: left; */
     /* border-bottom: 1px solid green; */
 
 
@@ -76,6 +86,11 @@ button {
   box-shadow: 0px 0px 0px transparent;
   border: 0px solid transparent;
   text-shadow: 0px 0px 0px transparent;
+}
+
+.topClose {
+    color: rgb(143, 237, 100);
+    padding-bottom: 50px;
 }
 
 .topClose:hover {
@@ -109,5 +124,12 @@ button {
 @media all and (max-width: 517px) {
     .listWork {
         background-color: tomato;
+    }
+
+    .modal {
+        display: flex;
+        justify-items: center;
+        height: 500px;
+        width: 250px;
     }
 }
