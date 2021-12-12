@@ -20,8 +20,8 @@ const Modal = ({show, close, title, children}) => {
                     </div>
                 </div>
                         <footer className={styles.modalFooter}>
-                            <button className={styles.modalClose} onClick={() => close()}>click runrunnnnnn</button>
-                            <button className={styles.submit}>just runnnnnnnnn</button>
+                            <button className={styles.modalClose} onClick={() => close()}></button>
+                            <button className={styles.submit}></button>
 
                         </footer>
             </div>
@@ -34,4 +34,4 @@ const Modal = ({show, close, title, children}) => {
 };
     
     
-    export default Modal;
+export default Modal;

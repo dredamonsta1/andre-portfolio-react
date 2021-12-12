@@ -25,17 +25,14 @@
     background-color: black;
     transform: translateY(-1px);
     transition: all 0.5s ease;
-    border: solid 1px rgb(238, 236, 130);
+    border: solid 15px rgb(238, 236, 130);
     /* opacity: .7; */
 }
 
-
- /* .modal {
-     display: flex;
-     justify-content: center;
-     padding: 2rem;
-
- }  */
+.modal {
+    display: flex;
+    background-color: blueviolet;
+}
 
 .intro {
     display: flex;
@@ -93,7 +90,7 @@ button {
 
 .modalContent {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     /* text-align: center; */
     padding-bottom: 50px;
     border: solid 1px rgb(130, 238, 229);
@@ -103,7 +100,7 @@ button {
 .modalFooter {
     display: flex;
     justify-content: end;
-    border: solid 1px green;
+    border: solid 1px indianred;
     color: indianred;
 
 
