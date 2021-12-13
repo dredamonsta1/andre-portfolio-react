@@ -12,22 +12,25 @@ const ModalContact = () => {
             <button className={styles.contact} onClick={() => toggle()}>CONTACT</button>
             <Modal show={modal} close={toggle} title="Contact">
         
-            This is the Contact modal more soon 
-            <form>
-                <label>
-                    Name:
-                    <input type="text" name="name" />
+                This is the Contact modal more soon 
+            <form className={styles.contactForm}>
+                <label className={styles.nameLabel}>
+                    Name
+                    <input type="text" name="name" className={styles.inputName}/>
                 
                 </label>
-                <label>
-                    Email:
-                    <input type="email" email="email"/>
+                <label className={styles.emailLabel}>
+                    Email
+                    <input type="email" email="email" className={styles.inputEmail}/>
                 </label>
 
-                <label>
-                    Message:
-                    <input type="text" message="message" />
+
+                <label className={styles.messageLabel}>
+                    Message
                 </label>
+                <textarea className={styles.nameLabel}>
+                
+                </textarea>
                 <input type="submit" value="submit" />
                 <input type="reset" value="reset" />
             
