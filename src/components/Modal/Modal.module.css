@@ -3,19 +3,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
 
-
 .listWork {
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    /* align-self: center; */
-    /* justify-content: space-evenly; */
     font-family: 'Nunito',
     sans-serif;
     font-weight: 200;
     font-size: 12px;  
-    /* border-radius: 25px; */
 
     position: fixed;
     top: 0px;
@@ -24,8 +20,8 @@
     right: 0px;
     /* background-color: black; */
     background: rgba(0, 0,0, 0.7);
-    transform: translateY(-1px);
-    transition: all 0.5s ease;
+    /* transform: translateY(1px); */
+    /* transition: all 5s ease; */
     border: solid 15px rgb(238, 236, 130);
     /* opacity: .7; */
 }
@@ -43,7 +39,7 @@
 .intro {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     
     /* width: calc(25rem + 16vw); */
     height: 630px;
@@ -59,25 +55,27 @@
     /* background-color: black; */
     transition: all 0.5s ease;
     opacity: 3;
-    border: solid 5px green;
+    border: solid 15px lightcoral;
 }
 
 .modalHeader {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* position: relative; */
     /* border-bottom: 1px solid white; */
     margin-bottom: 50px;
-    border: solid 5px green;
+    border: solid 25px green;
+    /* background-color: lavenderblush; */
 
 }
 
 .modalTitle {
-    display: flex;
-    right: 800px;
+    /* display: flex; */
+    right: 1800px;
     /* align-self: center; */
-    /* text-align: left; */
-    /* border-bottom: 1px solid green; */
+    text-align: left;
+    /* border-bottom: 21px solid blue; */
+    border: solid 5px blue;
 
 
 }
@@ -90,12 +88,14 @@ button {
 
 .topClose {
     color: rgb(143, 237, 100);
-    padding-bottom: 50px;
+    padding-bottom: 5px;
+
+    border: solid 5px yellowgreen;
 }
 
 .topClose:hover {
-    display: flex;
-    justify-self: self-end;
+    /* display: flex; */
+    /* justify-self: self-end; */
     color: thistle;
     /* left: 500px; */
 
@@ -104,8 +104,8 @@ button {
 /* .topClose:hover */
 
 .modalContent {
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: space-evenly; */
     /* text-align: center; */
     padding-bottom: 50px;
     border: solid 1px rgb(130, 238, 229);
@@ -113,8 +113,8 @@ button {
 }
 
 .modalFooter {
-    display: flex;
-    justify-content: end;
+    /* display: flex; */
+    /* justify-content: end; */
     border: solid 1px indianred;
     color: indianred;
 
