@@ -19,15 +19,12 @@ const Modal = ({show, close, title, children}) => {
                         <main className={styles.modalContent}>{children}</main>
                     </div>
                 </div>
-                        <footer className={styles.modalFooter}>
-                            <button className={styles.modalClose} onClick={() => close()}></button>
-                            <button className={styles.submit}></button>
-
-                        </footer>
+                        
             </div>
             
-            : null}</>, 
-            document.getElementById("modal")
+            : null}
+        </>, 
+        document.getElementById("modal")
 
     );
         
