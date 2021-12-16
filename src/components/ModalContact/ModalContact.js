@@ -27,11 +27,11 @@ const ModalContact = () => {
                 <label className={styles.messageLabel}>
                     Message
                 </label>
-                <textarea className={styles.nameLabel}>
+                <textarea className={styles.textAreaLabel}>
                 
                 </textarea>
-                <input type="submit" value="submit" />
-                <input type="reset" value="reset" />
+                <input className={styles.submitBtn} type="submit" value="submit" />
+                <input className={styles.resetBtn} type="reset" value="reset" />
             
             </form>
             </Modal>
