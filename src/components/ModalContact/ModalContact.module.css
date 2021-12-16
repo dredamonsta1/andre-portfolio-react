@@ -3,12 +3,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
 
+
+
 .contact {
-    border: solid 5px red;
+    border-top: solid var(--line) 1px;
+    border-right: solid var(--line) 1px;
+    border-bottom: solid var(--line) 1px;
+    padding: 20px 25px 20px 25px;
+    border-radius: 0 4px 4px 0;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(220, 20, 60, 0);
+    cursor: pointer;
 }
 
 .contactForm {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+
     border: solid 5px red;
 
+
+}
+
+.nameLabel {
+    /* border: solid 5px red; */
+    width: 50%;
+    border-radius: 5px;
+
+}
+
+
+@media all and (max-width: 517px) {
+    .modalBtnContainer {
+        contain: style layout inline-size;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-right: 13%;
+        left: 700px;
+    }
+
+        /* .intro{
+            border: solid var(--line) 1px;
+            border-radius: 4px 4px 4px 4px;
+            width: 150px;
+
+        }
+        .work {
+            border: solid var(--line) 1px;
+              border-radius: 4px 4px 4px 4px;
+              width: 150px;
+          }
+          .about {
+            border: solid var(--line) 1px;
+              border-radius: 4px 4px 4px 4px;
+              width: 150px;
+          } */
+          .contact {
+            border: solid var(--line) 1px;
+              border-radius: 4px 4px 4px 4px;
+              width: 150px;
+          } 
 
 }

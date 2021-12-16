@@ -12,7 +12,6 @@ const ModalContact = () => {
             <button className={styles.contact} onClick={() => toggle()}>CONTACT</button>
             <Modal show={modal} close={toggle} title="Contact">
         
-                This is the Contact modal more soon 
             <form className={styles.contactForm}>
                 <label className={styles.nameLabel}>
                     Name
