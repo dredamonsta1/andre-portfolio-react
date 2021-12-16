@@ -14,11 +14,11 @@ const Modal = ({show, close, title, children}) => {
                     <div className={styles.intro}>
                         <header className={styles.modalHeader}>
                             <h2 className={styles.modalTitle}>{title}</h2>
-                            <button aria-label="close modal" className={styles.topClose} onClick={() => close()}>{closeBtn}</button>
                         </header>
                         <main className={styles.modalContent}>{children}</main>
                     </div>
                 </div>
+                <button aria-label="close modal" className={styles.topClose} onClick={() => close()}>{closeBtn}</button>
                         
             </div>
             

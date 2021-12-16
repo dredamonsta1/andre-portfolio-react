@@ -5,7 +5,8 @@
 
 .listWork {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
     text-transform: uppercase;
     font-family: 'Nunito',
@@ -88,10 +89,10 @@ button {
 .topClose {
     display: block;
     position: absolute;
-    top: 10;
+    /* top: 10; */
     /* right: 100px; */
     overflow: hidden;
-    margin-left: 350px;
+    /* margin-left: 350px; */
     
     color: rgb(143, 237, 100);
     padding-bottom: 5px;
