@@ -131,6 +131,7 @@
             border: solid var(--line) 1px;
               border-radius: 4px 4px 4px 4px;
               width: 150px;
+              /* background-color: tomato; */
           } 
 
 }
