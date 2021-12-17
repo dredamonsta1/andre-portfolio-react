@@ -129,7 +129,7 @@ button {
 
 /* } */
 
-@media all and (max-width: 517px) {
+@media all and (max-width: 600px) {
     .listWork {
         background: rgba(0, 0,0, 0.7);
         /* background-color: tomato; */

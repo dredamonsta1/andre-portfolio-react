@@ -101,7 +101,7 @@
     /* padding-left: 10.8%; */
 }
 
-@media all and (max-width: 517px) {
+@media all and (max-width: 600px) {
     .modalBtnContainer {
         contain: style layout inline-size;
         display: flex;
