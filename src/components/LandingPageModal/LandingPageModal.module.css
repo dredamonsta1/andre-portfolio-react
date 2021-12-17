@@ -97,7 +97,8 @@
   }
 
 .modalBtnContainer {
-    padding-left: 12.8%;
+  padding-left: 45px;
+    /* padding-left: 10.8%; */
 }
 
 @media all and (max-width: 517px) {
