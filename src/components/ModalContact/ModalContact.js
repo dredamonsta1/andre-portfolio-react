@@ -13,12 +13,12 @@ const ModalContact = () => {
             <Modal show={modal} close={toggle} title="Contact">
         
             <form className={styles.contactForm}>
-                <label className={styles.nameLabel}>
+                <label className={styles.nameLabel} aria-label="name">
                     Name
-                    <input type="text" name="name" className={styles.inputName}/>
+                    <input type="text" name="name" className={styles.inputName} aria-label="name"/>
                 
                 </label>
-                <label className={styles.emailLabel}>
+                <label className={styles.emailLabel} aria-label="email">
                     Email
                     <input type="email" email="email" className={styles.inputEmail}/>
                 </label>
