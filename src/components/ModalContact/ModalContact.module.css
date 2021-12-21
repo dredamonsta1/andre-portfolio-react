@@ -32,11 +32,16 @@
 .contactForm {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
     flex-wrap: wrap;
+    /* align-items: baseline; */
+    justify-content: space-between;
     /* justify-content: center; */
     /* align-items: center; */
 
     /* border: solid 5px red; */
+    vertical-align: baseline;
 
 
 }
@@ -66,9 +71,9 @@
     border: solid 1px #ffffff;
 
     color: inherit;
-    display: block;
+    /* display: block; */
     outline: 0;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
     text-decoration: none;
     width: 40%;
 
@@ -97,7 +102,7 @@
     border: solid 1px #ffffff;
 
     color: inherit;
-    display: block;
+    /* display: block; */
     outline: 0;
     padding: 0 1rem;
     text-decoration: none;
