@@ -30,18 +30,28 @@
 }
 
 .contactForm {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    'nameLabel emailLabel'
+    'messageLabel messageLabel'
+    'submitBtn resetBtn'
+    ;
+
+    padding: 0;
+
+    /* flex-direction: column; */
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+    /* flex-wrap: wrap; */
     /* align-items: baseline; */
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* justify-content: center; */
     /* align-items: center; */
 
     /* border: solid 5px red; */
-    vertical-align: baseline;
+    /* vertical-align: baseline; */
 
 
 }

@@ -26,10 +26,10 @@ const ModalContact = () => {
 
                 <label className={styles.messageLabel}>
                     Message
+                    <textarea className={styles.textAreaLabel}>
+                    
+                    </textarea>
                 </label>
-                <textarea className={styles.textAreaLabel}>
-                
-                </textarea>
                 <input className={styles.submitBtn} type="submit" value="submit" />
                 <input className={styles.resetBtn} type="reset" value="reset" />
             
