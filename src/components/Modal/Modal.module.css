@@ -75,8 +75,10 @@
 
 .modalTitle {
     display: inline-block;    
+    margin-top: 100px;
+    margin-left: 15px;
     /* text-align: left; */
-    /* border-bottom: 21px solid blue; */
+    border-bottom: 1px solid white;
     /* border: solid 5px blue; */
 
 
@@ -94,6 +96,7 @@ button {
     /* top: 10; */
     /* right: 100px; */
     overflow: hidden;
+    margin-top: 20px;
     margin-left: 500px;
     
     color: rgb(143, 237, 100);
