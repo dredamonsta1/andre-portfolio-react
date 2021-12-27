@@ -166,6 +166,7 @@
 
 .submitBtn {
     display: inline-block;
+    position: relative;
     justify-self: left;
     appearance: none;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -187,7 +188,7 @@
     text-transform: uppercase;
     white-space: nowrap;
 
-    width: 50%;
+    width: 75%;
     margin-left: 15px;
 
 }
