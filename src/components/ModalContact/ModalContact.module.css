@@ -245,6 +245,23 @@
               border-radius: 4px 4px 4px 4px;
               width: 150px;
               /* background-color: tomato; */
+              margin-left: 50%;
           } 
+
+          /* .contactForm {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: 
+                'nameLabel emailLabel'
+                'textAreaLabel textAreaLabel'
+                'submitBtn resetBtn'
+            ;
+        
+            padding: 0;
+  
+        
+        
+        } */
 
 }

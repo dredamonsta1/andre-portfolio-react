@@ -125,15 +125,6 @@ button {
 
 }
 
-/* .modalFooter { */
-    /* display: flex; */
-    /* justify-content: end; */
-    /* border: solid 1px indianred; */
-    /* color: indianred; */
-
-
-/* } */
-
 @media all and (max-width: 600px) {
     .listWork {
         background: rgba(0, 0,0, 0.7);
@@ -157,8 +148,8 @@ button {
         margin-top: -10px;
     }
 
-    .modalTitle {
-        margin-left: 3%;
+    /* .modalTitle {
+        margin-left: 17%;
 
-    }
+    } */
 }
