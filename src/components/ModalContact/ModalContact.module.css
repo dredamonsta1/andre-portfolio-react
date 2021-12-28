@@ -31,28 +31,40 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    grid-template-areas: 
+    /* grid-template-areas: 
         'nameLabel emailLabel'
-        /* 'textAreaLabel textAreaLabel' */
-        /* 'submitBtn resetBtn' */
-        /* 'submitBtn nameLabel' */
-    ;
+        'textAreaLabel textAreaLabel'
+        'submitBtn resetBtn'
+        'submitBtn nameLabel'
+    ; */
 
     padding: 0;
 
-    /* flex-direction: column; */
-    /* flex-grow: 1; */
-    /* flex-shrink: 1; */
-    /* flex-wrap: wrap; */
-    /* align-items: baseline; */
-    /* justify-content: space-between; */
-    /* justify-content: center; */
-    /* align-items: center; */
+}
 
-    /* border: solid 5px red; */
-    /* vertical-align: baseline; */
+.nameLabel{
+    grid-column: span 1;
+    order: 1;
+}
 
+.emailLabel{
+    grid-column: span 1;
+    order: 2;
+}
 
+.messageLabel {
+    grid-column: 1 / -1;
+    order: 3;
+}
+
+.submitBtn {
+    grid-column: span 1;
+    order: 4;
+}
+
+.resetBtn {
+    grid-column: span 1;
+    order: 4;
 }
 
 .nameLabel {
