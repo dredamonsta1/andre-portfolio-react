@@ -33,8 +33,9 @@
     grid-template-rows: auto;
     grid-template-areas: 
         'nameLabel emailLabel'
-        'textAreaLabel textAreaLabel'
-        'submitBtn resetBtn'
+        /* 'textAreaLabel textAreaLabel' */
+        /* 'submitBtn resetBtn' */
+        /* 'submitBtn nameLabel' */
     ;
 
     padding: 0;
