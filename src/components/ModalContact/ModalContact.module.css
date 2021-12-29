@@ -15,7 +15,6 @@
     color: white;
     background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
-
     min-width: 7.5rem;
     height: 2.75rem;
     line-height: 2.75rem;
@@ -23,7 +22,6 @@
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     font-size: 0.8rem;
-
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
 
@@ -31,13 +29,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    /* grid-template-areas: 
-        'nameLabel emailLabel'
-        'textAreaLabel textAreaLabel'
-        'submitBtn resetBtn'
-        'submitBtn nameLabel'
-    ; */
-
     padding: 0;
 
 }
@@ -69,7 +60,6 @@
 
 .nameLabel {
     color: #ffffff;
-    /* display: block; */
     font-size: 0.8rem;
     font-weight: 300;
     letter-spacing: 0.2rem;
@@ -77,15 +67,7 @@
     margin: 0 0 1rem 0;
     text-transform: uppercase;
     padding-left: 15px;
-
     padding-right: 0;
-
-    /* padding: 0;
-    border: 0;
-    font: inherit;
-    vertical-align: baseline; */
-    /* flex: initial; */
-
 }
 .inputName {
     display: block;
@@ -94,17 +76,12 @@
     box-sizing: border-box;
     border-radius: 4px;
     border: solid 1px #ffffff;
-
     color: inherit;
-    /* display: block; */
     outline: 0;
-    /* padding: 0 1rem; */
     text-decoration: none;
     width: 80%;
-
     font-weight: 300;
     font-size: 1rem;
-    /* line-height: 1.65; */
 }
 
 .emailLabel {
@@ -114,7 +91,6 @@
     font-weight: 300;
     letter-spacing: 0.2rem;
     line-height: 1.5;
-    /* margin: 0 0 1rem 0; */
     text-transform: uppercase;
 
     padding-left: 15px;
@@ -127,16 +103,11 @@
     box-sizing: border-box;
     border-radius: 4px;
     border: solid 1px #ffffff;
-
     color: inherit;
-    /* display: block; */
     outline: 0;
-    /* padding: 0 1rem; */
     text-decoration: none;
     width: 91%;
 }
-
-
 
 .messageLabel {
     color: #ffffff;
@@ -148,7 +119,6 @@
     margin: 0 0 1rem 0;
     text-transform: uppercase;
     padding-left: 15px;
-    /* height: 130px; */
     width: 500px;
 }
 
@@ -160,23 +130,14 @@
     color: inherit;
     display: block;
     outline: 0;
-
     font-weight: 300;
     font-size: 1rem;
     line-height: 1.65;
-
-
     width: 100%;
     padding: 0.75rem 1rem;
     margin: 8px 0;
     box-sizing: border-box;
-
     text-decoration: none;
-    /* width: 100%; */
-    /* border-radius: 4px; */
-    /* border: solid 1px white; */
-    /* color: inherit; */
-    /* background-color: transparent;  */
 }
 
 .submitBtn {
@@ -192,17 +153,14 @@
     border: 0;
     box-shadow: inset 0 0 0 1px #ffffff;
     cursor: pointer;
-    /* display: inline-block; */
     font-size: 0.8rem;
     height: 2.75rem;
     letter-spacing: 0.2rem;
     outline: 0;
-    /* padding: 0 1.25rem 0 1.35rem; */
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
-
     width: 75%;
     margin-left: 15px;
 
@@ -239,45 +197,104 @@
         margin-right: 13%;
         left: 700px;
     }
+    
+    .contact {
+        border: solid var(--line) 1px;
+        border-radius: 4px 4px 4px 4px;
+        width: 150px;
+    } 
 
-        /* .intro{
-            border: solid var(--line) 1px;
-            border-radius: 4px 4px 4px 4px;
-            width: 150px;
+    .contactForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;    
+        padding: 0;
+    }
 
-        }
-        .work {
-            border: solid var(--line) 1px;
-              border-radius: 4px 4px 4px 4px;
-              width: 150px;
-          }
-          .about {
-            border: solid var(--line) 1px;
-              border-radius: 4px 4px 4px 4px;
-              width: 150px;
-          } */
-          .contact {
-            border: solid var(--line) 1px;
-              border-radius: 4px 4px 4px 4px;
-              width: 150px;
-              /* background-color: tomato; */
-              margin-left: 50%;
-          } 
 
-          /* .contactForm {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto;
-            grid-template-areas: 
-                'nameLabel emailLabel'
-                'textAreaLabel textAreaLabel'
-                'submitBtn resetBtn'
-            ;
-        
-            padding: 0;
+    .nameLabel {
+        grid-column: span 1;
+        order: 1;
+    }
+            
+    .emailLabel {
+        grid-column: span 1;
+        order: 2;
+    }
+            
+    .messageLabel {
+        grid-column: 1 / -1;
+        order: 3;
+    }
+            
+    .submitBtn {
+        grid-column: span 1;
+        order: 4;
+    }
+            
+    .resetBtn {
+        grid-column: span 1;
+        order: 4;
+    }
+
+    .nameLabel {
+        color: #ffffff;
+        font-size: 0.8rem;
+        font-weight: 300;
+        letter-spacing: 0.2rem;
+        line-height: 1.5;
+        margin: 0 0 1rem 0;
+        text-transform: uppercase;
+        padding-left: 15px;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .emailLabel {
+        color: #ffffff;
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 300;
+        letter-spacing: 0.2rem;
+        line-height: 1.5;
+        text-transform: uppercase;
+    
+        padding-left: 1px;
+        width: 100%;
+    }
+
+    .messageLabel {
+        color: #ffffff;
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 300;
+        letter-spacing: 0.2rem;
+        line-height: 1.5;
+        margin: 0 0 1rem 0;
+        text-transform: uppercase;
+        padding-left: 15px;
+        width: 100%;
+    }
+
+    .textAreaLabel {
+        transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        background-color: transparent;
+        border-radius: 4px;
+        border: solid 1px #ffffff;
+        color: inherit;
+        display: block;
+        outline: 0;
+        font-weight: 300;
+        font-size: 1rem;
+        line-height: 1.65;
+        width: 50%;
+        padding: 0.75rem 1rem;
+        margin: 8px 0;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
   
         
         
-        } */
 
 }
