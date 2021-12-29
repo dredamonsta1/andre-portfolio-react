@@ -104,6 +104,7 @@ button {
     }
 
     .modalTitle {
+        margin-left: 45px;
         margin-top: 50px;
     }
 }
