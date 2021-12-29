@@ -2,9 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
-
-
-
 .contact {
     border-top: solid var(--line) 1px;
     border-right: solid var(--line) 1px;
@@ -297,8 +294,4 @@
     .resetBtn {
         margin-left: 0px;
     }
-  
-        
-        
-
 }
