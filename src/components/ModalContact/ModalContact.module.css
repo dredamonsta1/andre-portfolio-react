@@ -242,7 +242,7 @@
         line-height: 1.5;
         margin: 0 0 1rem 0;
         text-transform: uppercase;
-        padding-left: 15px;
+        padding-left: 46px;
         padding-right: 0;
         width: 96%;
     }
@@ -259,9 +259,9 @@
         letter-spacing: 0.2rem;
         line-height: 1.5;
         text-transform: uppercase;
-        margin-left: 15px;
-        padding-left: 1px;
-        width: 83%;
+        /* margin-left: 15px; */
+        padding-left: 46px;
+        width: 86%;
     }
 
     .messageLabel {
@@ -273,8 +273,8 @@
         line-height: 1.5;
         margin: 0 0 1rem 0;
         text-transform: uppercase;
-        padding-left: 15px;
-        /* width: 100%; */
+        padding-left: 46px;
+        width: 96%;
     }
 
     .textAreaLabel {
@@ -295,8 +295,15 @@
         text-decoration: none;
     }
 
+    .submitBtn {
+        margin-left: 46px;
+        margin-bottom: 15px;
+        width: 68%;
+    }
+
     .resetBtn {
-        margin-left: 15px;
-        width: 75%;
+        margin-left: 46px;
+        /* padding-left: 46px; */
+        width: 68%;
     }
 }
