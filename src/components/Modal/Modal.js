@@ -12,26 +12,23 @@ const Modal = ({show, close, title, children}) => {
             <div className={styles.listWork} onClick={() => close()}>
                 <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
                     <div className={styles.intro}>
-                    <header className={styles.modalHeader}>
-                    <h2 className={styles.modalTitle}>{title}</h2>
-                    <button aria-label="close modal" claseName={styles.topClose} onClick={() => close()}>{closeBtn}</button>
+                        <header className={styles.modalHeader}>
+                            <h2 className={styles.modalTitle}>{title}</h2>
                         </header>
                         <main className={styles.modalContent}>{children}</main>
-                        <footer className={styles.modalFooter}>
-                            <button className={styles.modalClose} onClick={() => close()}>Close</button>
-                            <button className={styles.submit}>submit</button>
-
-                        </footer>
                     </div>
                 </div>
+                <button aria-label="close modal" className={styles.topClose} onClick={() => close()}>{closeBtn}</button>
+                        
             </div>
             
-            : null}</>, 
-            document.getElementById("modal")
+            : null}
+        </>, 
+        document.getElementById("modal")
 
     );
         
 };
     
     
-    export default Modal;
+export default Modal;

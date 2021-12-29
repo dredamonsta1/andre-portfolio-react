@@ -12,6 +12,17 @@
     color: white;
     background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
+
+
+    /* display: block; */
+    min-width: 7.5rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    padding: 0 1.25rem 0 1.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    /* border-bottom: 0; */
 }
 
 .intro:hover, .intro:focus {
@@ -27,6 +38,16 @@
     color: white;
     background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
+
+    /* display: block; */
+    min-width: 7.5rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    padding: 0 1.25rem 0 1.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    /* border-bottom: 0; */
 }
 
 .work:hover, .work:focus {
@@ -42,6 +63,16 @@
     color: white;
     background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
+
+    /* display: block; */
+    min-width: 7.5rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    padding: 0 1.25rem 0 1.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    /* border-bottom: 0; */
 }
 
 .about:hover, .about:focus {
@@ -66,10 +97,11 @@
   }
 
 .modalBtnContainer {
-    padding-left: 12.8%;
+  padding-left: 45px;
+    /* padding-left: 10.8%; */
 }
 
-@media all and (max-width: 517px) {
+@media all and (max-width: 600px) {
     .modalBtnContainer {
         contain: style layout inline-size;
         display: flex;
@@ -99,6 +131,7 @@
             border: solid var(--line) 1px;
               border-radius: 4px 4px 4px 4px;
               width: 150px;
+              /* background-color: tomato; */
           } 
 
 }

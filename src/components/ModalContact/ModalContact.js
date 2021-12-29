@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../LandingPageModal/LandingPageModal.module.css";
+import styles from "../ModalContact/ModalContact.module.css";
 import Modal from "../Modal/Modal";
 
 
@@ -12,7 +12,28 @@ const ModalContact = () => {
             <button className={styles.contact} onClick={() => toggle()}>CONTACT</button>
             <Modal show={modal} close={toggle} title="Contact">
         
-            This is the Contact modal more soon 
+            <form className={styles.contactForm}>
+                <label className={styles.nameLabel} aria-label="name">
+                    Name
+                    <input type="text" name="name" className={styles.inputName} aria-label="name"/>
+                
+                </label>
+                <label className={styles.emailLabel} aria-label="email">
+                    Email
+                    <input type="email" email="email" className={styles.inputEmail}/>
+                </label>
+
+
+                <label className={styles.messageLabel}>
+                    Message
+                    <textarea className={styles.textAreaLabel}>
+                    
+                    </textarea>
+                </label>
+                <input className={styles.submitBtn} type="submit" value="submit" />
+                <input className={styles.resetBtn} type="reset" value="reset" />
+            
+            </form>
             </Modal>
         </>
     )
