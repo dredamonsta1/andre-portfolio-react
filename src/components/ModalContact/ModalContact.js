@@ -7,6 +7,8 @@ import Modal from "../Modal/Modal";
 const ModalContact = () => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
+
+    console.log(toggle);
     return(
         <>
             <button className={styles.contact} onClick={() => toggle()}>CONTACT</button>
