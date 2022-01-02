@@ -7,7 +7,7 @@
 .contactIcons {
     display: flex;
     justify-content: space-evenly;
-    flex-direction: row;
+    /* flex-direction: row; */
 
     padding-top: 25px;
     padding-left: 0;
