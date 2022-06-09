@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "sourceMap": true, /* generates corrresponding .map file */
+    "declaration": true, /* generate corresponding .d.ts file */
+    "noUnusedLocals": true, /* reports errors on unused locals (suggested for clean code writing) */
+    "noUnusedParameters": true, /* report errors on unused parameters (again, suggested for clean code writing) */
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": ["node_modules", "build"] // *** The files to not type check ***
+}
