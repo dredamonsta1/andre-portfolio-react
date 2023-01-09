@@ -182,7 +182,7 @@
     margin-left: 15px;
 }
 
-@media all and (max-width: 517px) {
+@media all and (max-width: 565px) {
     .modalBtnContainer {
         contain: style layout inline-size;
         display: flex;

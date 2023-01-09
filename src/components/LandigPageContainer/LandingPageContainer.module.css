@@ -28,6 +28,6 @@ p {
 
 .downlineBottom {
     height: 100px;
-    border-left: solid var(--line) /* green*/ 1px;
+    border-left: solid var(--line)  green 1px;
     margin-left: 50%;
 }

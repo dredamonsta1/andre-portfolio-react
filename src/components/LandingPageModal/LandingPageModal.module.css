@@ -101,7 +101,7 @@
     /* padding-left: 10.8%; */
 }
 
-@media all and (max-width: 600px) {
+@media all and (max-width: 565px) {
     .modalBtnContainer {
         contain: style layout inline-size;
         display: flex;
@@ -109,6 +109,7 @@
         flex-direction: column;
         margin-right: 13%;
         left: 700px;
+        /* background-color: blueviolet; */
     }
 
         .intro{
