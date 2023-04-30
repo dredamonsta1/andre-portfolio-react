@@ -8,6 +8,14 @@
   --opaqe: rgb(112, 108, 108, .3);
 }
 
+#light {                   /* <---------------light mode context  */
+  background-color: #f3ebf6;
+}
+
+#dark {                    /* <---------------dark mode context  */
+  background-color: #46045e;
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
