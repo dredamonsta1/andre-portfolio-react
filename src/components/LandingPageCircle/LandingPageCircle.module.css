@@ -2,12 +2,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
-.awSpan {
+/* .awSpan { */
     /* filter: blur(8px); */
-    display: flex;
+    /* display: flex;
     margin-top: 25%;
     justify-content: center;
     flex-grow: 4;
+} */
+
+.circleImage {
+    height: 98px;
+    width: 98px;
+    border-radius: 50px;
 }
 
 .circle {

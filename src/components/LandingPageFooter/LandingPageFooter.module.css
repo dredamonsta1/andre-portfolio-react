@@ -14,11 +14,13 @@
     font-family: 'Nunito',
     sans-serif;
     text-transform: uppercase;
+    /* border: red solid 1px; */
     
 }
 
 .intro:hover, .intro:focus {
     background-color: var(--opaqe);
+    /* border: red solid 1px; */
 }
 
 .work:hover, .work:focus {
@@ -33,3 +35,8 @@
     background-color: var(--opaqe);
    
 }
+
+/* .linkedIn:hover{
+    color: blue;
+
+} */
