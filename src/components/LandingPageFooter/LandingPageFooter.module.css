@@ -2,7 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
-
+/* #root {
+    height: 100%;
+} */
 
 .contactIcons {
     display: flex;
@@ -27,14 +29,26 @@
     background-color: var(--opaqe);
 }
 
-.about:hover, .about:focus {
+.contactIcons:hover, .about:focus {
     background-color: var(--opaqe);
 }
 
-.contact:hover, .contact:focus {
-    background-color: var(--opaqe);
+.twitter:hover {
+    
+
+    -webkit-transform: rotateZ(720deg);
+      -moz-transform: rotateZ(720deg);
+      transform: rotateZ(720deg);
    
 }
+
+/* .contactIcons {
+    display: inline-block;
+    width: 200px;
+    border: 1px solid red;
+    overflow: hidden;
+    text-align: center;
+} */
 
 /* .linkedIn:hover{
     color: blue;
