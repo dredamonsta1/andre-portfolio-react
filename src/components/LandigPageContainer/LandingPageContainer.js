@@ -10,8 +10,8 @@ function LandingPageContainer() {
             <div className={styles.lineUnderCircle} />
             <div className={styles.downlineTop} />
             <div className={styles.innerParagraph}>
-                <h1>Andre Wilkinson</h1>
-                <p>Fullstack trained frontend dev just enjoing learning everyday, embracing the chaos.</p>
+                <h1 className={styles.innerH1}>Andre Wilkinson</h1>
+                <p className={styles.paragraph}>Fullstack trained frontend dev just enjoing learning everyday, embracing the chaos.</p>
             </div>
             <div className={styles.downlineBottom} />
         </div>

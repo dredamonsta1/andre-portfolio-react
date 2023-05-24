@@ -4,6 +4,8 @@ import LandingPageCircle from './components/LandingPageCircle/LandingPageCircle'
 import LandingPageContainer from './components/LandigPageContainer/LandingPageContainer';
 import LandingPageModal from './components/LandingPageModal/LandingPageModal';
 import LandingPageFooter from './components/LandingPageFooter/LandingPageFooter';
+import AppButton from './components/button/AppButton';
+import ReactSwitch from 'react-switch';
 // import LandingPageModal
 
 import './App.css';
@@ -11,7 +13,7 @@ import './App.css';
 export const themeContext = createContext("null");
 
 function App() {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("dark")
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
@@ -21,7 +23,12 @@ function App() {
     <themeContext.Provider value={{ theme, toggleTheme }}>
       {/* <div className='app' id={theme}> */}
         <div className="app-background" id={theme}>
-          <div className="filter-shade">
+              <div className='switch'>
+                <label>{theme === "light" ? "🌝" : "🌑"}</label>
+                <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
+              </div>
+          {/* <div className="filter-shade"> */}
+              <AppButton />
             <div className="small-container">
               <LandingPageCircle />
               <LandingPageContainer />
@@ -30,7 +37,7 @@ function App() {
               <LandingPageFooter />
               </div>
             </div>
-          </div>
+          {/* </div> */}
         </div>
       {/* </div> */}
     </themeContext.Provider>
