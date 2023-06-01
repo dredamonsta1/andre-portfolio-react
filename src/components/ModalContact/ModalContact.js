@@ -18,10 +18,10 @@ const ModalContact = () => {
         console.log("handleSubmit", name)
     }
 
-    const onChange = (e) => {
-        e.preventDefault();
-        alert(inputs);
-    }
+    // const onChange = (e) => {
+    //     e.preventDefault();
+    //     alert(inputs);
+    // }
 
     console.log(toggle);
     return(

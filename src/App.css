@@ -6,6 +6,10 @@
   width: 100%;
   height: 100%;
 } */
+.app {
+  width: 100%;
+  height: 100%;
+}
 
 body {
   display: flex;
@@ -25,21 +29,21 @@ body {
   --background: #ffffff;
   --text-primary: #000;
   --line: #000;
-  --opaqe: rgb(112, 108, 108, .3);
+  /* --opaqe: rgb(112, 108, 108, .3); */
 }
 
 [data-theme='dark'] {
   --background: #000;
   --text-primary: #ffffff;
   --line: #ffffff;
-  --opaqe: rgb(112, 108, 108, .3);
+  /* --opaqe: rgb(112, 108, 108, .3); */
 }
 
 
 
-#light {                   /* <---------------light mode context  */
-  background-color: #f3ebf6;
-}
+/*#light {                   /* <---------------light mode context  */
+  /* background-color: #f3ebf6;
+} */
 
 #dark {                    /* <---------------dark mode context  */
   background-color: #46045e;
@@ -87,23 +91,24 @@ body {
   justify-content: space-between;
   position: relative;
   height: 100%;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   /* background-color: blueviolet; */
+  border: solid 5px red;
 }
 
 .app-background {
   display: flex;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0,0, 0.7);
+  /* background: rgba(0, 0,0, 0.7); */
   align-items: center;
   justify-content: center;
 
   /* background-image: url(./image/mountains1.jpg); */
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   /* width: 100%;
   height: 100%; */
 }
