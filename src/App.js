@@ -11,27 +11,22 @@ import ReactSwitch from 'react-switch';
 
 import './App.css';
 
-// export const themeContext = createContext("null");
-
 function App() {
   const [theme, setTheme] = useLocalStorage('theme' ? 'dark' : 'light')
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme)
-
-    
-    // setTheme((curr) => (curr === "light" ? "dark" : "light"));
   }
 
   return (
     // <themeContext.Provider value={{ theme, toggleTheme }}>
-      <div className='app' data-theme={theme}>
-        <div className="app-background" id={theme}>
+      <div className='app' data-theme={theme} id={theme}>
               <div className='switch'>
                 <label>{theme === "light" ? "🌝" : "🌑"}</label>
                 <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
               </div>
+        <div className="app-background" id={theme}>
           {/* <div className="filter-shade"> */}
               {/* <AppButton /> */}
             <div className="small-container">

@@ -25,9 +25,9 @@
     /* border: red solid 1px; */
 }
 
-.work:hover, .work:focus {
+/* .work:hover, .work:focus {
     background-color: var(--opaqe);
-}
+} */
 
 .contactIcons:hover, .about:focus {
     background-color: var(--opaqe);
@@ -41,6 +41,7 @@
       transform: rotateZ(720deg);
    
 }
+
 
 /* .contactIcons {
     display: inline-block;

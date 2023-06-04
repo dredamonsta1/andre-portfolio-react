@@ -16,6 +16,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    color: var(--text-primary);
     border-top: solid var(--line) 1px;
     border-bottom: solid var(--line) 1px;
     padding: 48px 32px;

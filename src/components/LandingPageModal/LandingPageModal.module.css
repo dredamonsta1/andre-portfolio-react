@@ -60,7 +60,7 @@
     border-bottom: solid var(--line) 1px;
     padding: 20px 27px 20px 20px;
     text-decoration: none;
-    color: var(--text-primary);;
+    color: var(--text-primary);
     background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
 

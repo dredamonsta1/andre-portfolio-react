@@ -6,8 +6,8 @@ import styles from "./LandingPageFooter.module.css";
 
 
 function LandingPageFooter() {
-    const dreTweet = <FontAwesomeIcon icon={faTwitter} size="3x" color="lightblue"/>
-    const dreGit = <FontAwesomeIcon icon={faGithub} size="3x" color="yellow"/>
+    const dreTweet = <FontAwesomeIcon icon={faTwitter} className='dreTweet' size="2x" color="lightblue" fade/>
+    const dreGit = <FontAwesomeIcon className='dreGit' icon={faGithub}  hover="red"size="2x" color="yellow" />
     const dreYoutube = <FontAwesomeIcon icon={faYoutube} size="3x" color="red"/>
     const dreLinkedin = <FontAwesomeIcon icon={faLinkedin} size="3x" color="gray"/>
     return (
