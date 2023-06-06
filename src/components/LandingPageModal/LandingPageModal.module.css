@@ -94,12 +94,13 @@
 }
 
 .contact:hover, .contact:focus {
-    /* background-color: var(--opaqe); */
+    background-color: var(--opaqe);
     background-color: blue;
   }
 
 .modalBtnContainer {
   padding-left: 45px;
+  /* background-color: blue; */
     /* padding-left: 10.8%; */
 }
 

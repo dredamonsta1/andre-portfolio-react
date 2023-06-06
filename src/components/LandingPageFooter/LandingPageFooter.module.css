@@ -16,21 +16,29 @@
     font-family: 'Nunito',
     sans-serif;
     text-transform: uppercase;
-    /* border: red solid 1px; */
+    border: red solid 1px;
     
 }
 
-.intro:hover, .intro:focus {
+/* .linkedIn {
+    border: red solid 1px;
+} */
+
+/* .intro:hover, .intro:focus {
     background-color: var(--opaqe);
-    /* border: red solid 1px; */
-}
+    border: red solid 1px;
+} */
 
 /* .work:hover, .work:focus {
     background-color: var(--opaqe);
 } */
 
-.contactIcons:hover, .about:focus {
+/* .contactIcons:hover, .about:focus {
     background-color: var(--opaqe);
+} */
+
+.dreGit {
+    border: red solid 1px;
 }
 
 .twitter:hover {
@@ -39,6 +47,7 @@
     -webkit-transform: rotateZ(720deg);
       -moz-transform: rotateZ(720deg);
       transform: rotateZ(720deg);
+      /* border: red solid 1px; */
    
 }
 

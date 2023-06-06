@@ -5,9 +5,7 @@ import LandingPageCircle from './components/LandingPageCircle/LandingPageCircle'
 import LandingPageContainer from './components/LandigPageContainer/LandingPageContainer';
 import LandingPageModal from './components/LandingPageModal/LandingPageModal';
 import LandingPageFooter from './components/LandingPageFooter/LandingPageFooter';
-// import AppButton from './components/button/AppButton';
 import ReactSwitch from 'react-switch';
-// import LandingPageModal
 
 import './App.css';
 
@@ -20,15 +18,12 @@ function App() {
   }
 
   return (
-    // <themeContext.Provider value={{ theme, toggleTheme }}>
       <div className='app' data-theme={theme} id={theme}>
+        <div className="app-background" id={theme}>
               <div className='switch'>
-                <label>{theme === "light" ? "🌝" : "🌑"}</label>
+                <label>{theme === "light" ? "🌑" : "🌝"}</label>
                 <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
               </div>
-        <div className="app-background" id={theme}>
-          {/* <div className="filter-shade"> */}
-              {/* <AppButton /> */}
             <div className="small-container">
               <LandingPageCircle />
               <LandingPageContainer />
@@ -37,10 +32,8 @@ function App() {
               <LandingPageFooter />
               </div>
             </div>
-          {/* </div> */}
         </div>
       </div>
-    // </themeContext.Provider>
   );
 }
 export default App;
