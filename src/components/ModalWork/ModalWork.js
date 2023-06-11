@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styles from "../LandingPageModal/LandingPageModal.module.css"
 import Modal from "../Modal/Modal";
+import './ModalWork.module.css';
 
 
 const ModalWork = () => {
@@ -9,7 +10,7 @@ const ModalWork = () => {
     return (
         <>
             <button className={styles.work} onClick={() => toggle()}>WORK</button>
-            <Modal show={modal} close={toggle} title="WORK">
+            <Modal className={styles.modalWork} show={modal} close={toggle} title="WORK">
                 This is the Work modal
             </Modal>
         </>

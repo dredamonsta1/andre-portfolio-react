@@ -2,7 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
-
+/* #root {
+    height: 100%;
+} */
 
 .contactIcons {
     display: flex;
@@ -14,27 +16,49 @@
     font-family: 'Nunito',
     sans-serif;
     text-transform: uppercase;
-    /* border: red solid 1px; */
+    border: red solid 1px;
     
 }
 
-.intro:hover, .intro:focus {
+/* .linkedIn {
+    border: red solid 1px;
+} */
+
+/* .intro:hover, .intro:focus {
     background-color: var(--opaqe);
-    /* border: red solid 1px; */
+    border: red solid 1px;
+} */
+
+/* .work:hover, .work:focus {
+    background-color: var(--opaqe);
+} */
+
+/* .contactIcons:hover, .about:focus {
+    background-color: var(--opaqe);
+} */
+
+.dreGit {
+    border: red solid 1px;
 }
 
-.work:hover, .work:focus {
-    background-color: var(--opaqe);
-}
+.twitter:hover {
+    
 
-.about:hover, .about:focus {
-    background-color: var(--opaqe);
-}
-
-.contact:hover, .contact:focus {
-    background-color: var(--opaqe);
+    -webkit-transform: rotateZ(720deg);
+      -moz-transform: rotateZ(720deg);
+      transform: rotateZ(720deg);
+      /* border: red solid 1px; */
    
 }
+
+
+/* .contactIcons {
+    display: inline-block;
+    width: 200px;
+    border: 1px solid red;
+    overflow: hidden;
+    text-align: center;
+} */
 
 /* .linkedIn:hover{
     color: blue;

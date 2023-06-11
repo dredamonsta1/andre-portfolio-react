@@ -1,27 +1,29 @@
-import { createContext, useState } from 'react';
+// import { createContext, useState } from 'react';
+import useLocalStorage from 'use-local-storage';
 // import img from '../src/image/nyc.JPG';
 import LandingPageCircle from './components/LandingPageCircle/LandingPageCircle';
 import LandingPageContainer from './components/LandigPageContainer/LandingPageContainer';
 import LandingPageModal from './components/LandingPageModal/LandingPageModal';
 import LandingPageFooter from './components/LandingPageFooter/LandingPageFooter';
-// import LandingPageModal
+import ReactSwitch from 'react-switch';
 
 import './App.css';
 
-export const themeContext = createContext("null");
-
 function App() {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useLocalStorage('theme' ? 'dark' : 'light')
 
   const toggleTheme = () => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme)
   }
 
   return (
-    <themeContext.Provider value={{ theme, toggleTheme }}>
-      {/* <div className='app' id={theme}> */}
+      <div className='app' data-theme={theme} id={theme}>
         <div className="app-background" id={theme}>
-          <div className="filter-shade">
+              <div className='switch'>
+                <label>{theme === "light" ? "🌑" : "🌝"}</label>
+                <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
+              </div>
             <div className="small-container">
               <LandingPageCircle />
               <LandingPageContainer />
@@ -30,10 +32,8 @@ function App() {
               <LandingPageFooter />
               </div>
             </div>
-          </div>
         </div>
-      {/* </div> */}
-    </themeContext.Provider>
+      </div>
   );
 }
 export default App;

@@ -1,0 +1,8 @@
+.work {
+   color: var(--text-primary); 
+   background-color: blueviolet;
+}
+
+.modalWork {
+    background-color: blueviolet;
+}

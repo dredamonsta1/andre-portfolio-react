@@ -6,10 +6,10 @@ import styles from "./LandingPageFooter.module.css";
 
 
 function LandingPageFooter() {
-    const dreTweet = <FontAwesomeIcon icon={faTwitter} size="3x" color="lightblue"/>
-    const dreGit = <FontAwesomeIcon icon={faGithub} size="3x" color="yellow"/>
-    const dreYoutube = <FontAwesomeIcon icon={faYoutube} size="3x" color="red"/>
-    const dreLinkedin = <FontAwesomeIcon icon={faLinkedin} size="3x" color="gray"/>
+    const dreTweet = <FontAwesomeIcon icon={faTwitter} className='dreTweet' size="2x" color="lightblue"/>
+    const dreGit = <FontAwesomeIcon className='dreGit' icon={faGithub}  hover="red"size="2x" color="yellow" />
+    const dreYoutube = <FontAwesomeIcon icon={faYoutube} size="2x" color="red"/>
+    const dreLinkedin = <FontAwesomeIcon icon={faLinkedin} size="2x" color="gray"/>
     return (
         <div className={styles.contactIcons}>           
             <a className='linkedIn' href="https://www.linkedin.com/in/andre-wilkinson/" target="blank">{dreLinkedin}</a>

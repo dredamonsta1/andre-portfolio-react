@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: #1a8917;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  .label {
+    color: #fff;
+  }
+
+  
