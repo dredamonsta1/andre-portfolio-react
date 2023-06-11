@@ -4,6 +4,7 @@ import ModalIntro from "../ModalIntro/ModalIntro";
 import ModalWork from "../ModalWork/ModalWork";
 import ModalAbout from "../ModalAbout/ModalAbout";
 import ModalContact from "../ModalContact/ModalContact";
+import "./LandingPageModal.module.css";
 
 
 function LandingPageModal(props) {

@@ -34,3 +34,7 @@ p {
     border-left: solid var(--line) /* green*/ 1px;
     margin-left: 50%;
 }
+
+.paragraph {
+    display: flex;
+}
