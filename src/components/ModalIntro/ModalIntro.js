@@ -10,8 +10,10 @@ const ModalIntro = ()  => {
         <>
             <button className={styles.intro} onClick={() => toggle()}>INTRO</button>
             <Modal show={modal} close={toggle} title="INTRO">
-                Welcome to my Coding journey, where i test my progress.
+                <p>
+                    Welcome to my Coding journey, where i test my progress.
                 (modal paragraph styles to be updated)
+                </p>
             </Modal>
         </>
     )
