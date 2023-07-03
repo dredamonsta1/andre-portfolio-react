@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { createPortal } from 'react-dom';
 import styles from "../LandingPageModal/LandingPageModal.module.css";
 import Modal from "../Modal/Modal";
 
@@ -15,6 +16,10 @@ const ModalIntro = ()  => {
                 (modal paragraph styles to be updated)
                 </p>
             </Modal>
+            {/* {createPortal(
+            <h1>INTRO</h1>,
+            document.body
+            )} */}
         </>
     )
 }
