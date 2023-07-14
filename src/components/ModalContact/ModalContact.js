@@ -21,7 +21,6 @@ const ModalContact = () => {
     };
 
 
-
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
