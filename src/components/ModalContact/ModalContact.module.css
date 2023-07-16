@@ -164,6 +164,7 @@
     text-transform: uppercase;
     white-space: nowrap;
     width: 100%;
+    margin-top: 2%;
     /* margin-left: 15px; */
 }
 
@@ -184,6 +185,7 @@
     white-space: nowrap;
     border-radius: 4px;
     width: 100%;
+    margin-top: 2%;
     /* margin-left: 15px; */
 }
 
