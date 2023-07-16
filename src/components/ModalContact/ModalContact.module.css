@@ -31,7 +31,7 @@
 
 }
 
-.nameLabel{
+/* .nameLabel{
     grid-column: span 1;
     order: 1;
 }
@@ -54,7 +54,7 @@
 .resetBtn {
     grid-column: span 1;
     order: 4;
-}
+} */
 
 .nameLabel {
     color: #ffffff;
