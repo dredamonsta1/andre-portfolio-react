@@ -31,31 +31,6 @@
 
 }
 
-/* .nameLabel{
-    grid-column: span 1;
-    order: 1;
-}
-
-.emailLabel{
-    grid-column: span 1;
-    order: 2;
-}
-
-.messageLabel {
-    grid-column: 1 / -1;
-    order: 3;
-}
-
-.submitBtn {
-    grid-column: span 1;
-    order: 4;
-}
-
-.resetBtn {
-    grid-column: span 1;
-    order: 4;
-} */
-
 .nameLabel {
     color: #ffffff;
     font-size: 0.8rem;
