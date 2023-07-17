@@ -6,7 +6,7 @@ const Pdf = () => {
 
     return (
         <div>
-        <a href={AndreResume} target='_blank'>Download Pdf</a>
+        <a href={AndreResume} target='_blank' rel="noreferrer">Download Pdf</a>
         
         </div>
 
