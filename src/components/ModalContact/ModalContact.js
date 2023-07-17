@@ -21,7 +21,6 @@ const ModalContact = () => {
     };
 
 
-
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
@@ -30,12 +29,12 @@ const ModalContact = () => {
             <button className={styles.contact} onClick={() => toggle()}>CONTACT</button>
             <Modal show={modal} close={toggle} title="Contact">
 
-                <form ref={form} onSubmit={sendEmail}>
-                    <label>Name</label>
+                <form className={styles.contactForm} ref={form} onSubmit={sendEmail}>
+                    <label className={styles.nameLabel}>Name</label>
                     <input className={styles.inputName} type="text" name="user_name" />
-                    <label>Email</label>
+                    <label className={styles.emailLabel}>Email</label>
                     <input className={styles.inputEmail} type="email" name="user_email" />
-                    <label>Message</label>
+                    <label className={styles.messageLabel}>Message</label>
                     <textarea className={styles.textAreaLabel} name="message" />
                     <input className={styles.submitBtn} type="submit" value="Send" />
                     <input className={styles.resetBtn} type="reset" value="reset" />
