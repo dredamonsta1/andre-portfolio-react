@@ -1,12 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faYoutube, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faXTwitter, faYoutube, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import styles from "./LandingPageFooter.module.css";
 
 
 
 function LandingPageFooter() {
-    const dreTweet = <FontAwesomeIcon icon={faTwitter} className='dreTweet' size="2x" color="lightblue"/>
+    const dreTweet = <FontAwesomeIcon icon={faXTwitter} className='dreTweet' size="2x" color="lightblue"/>
     const dreGit = <FontAwesomeIcon className='dreGit' icon={faGithub}  hover="red"size="2x" color="yellow" />
     const dreYoutube = <FontAwesomeIcon icon={faYoutube} size="2x" color="red"/>
     const dreLinkedin = <FontAwesomeIcon icon={faLinkedin} size="2x" color="gray"/>
