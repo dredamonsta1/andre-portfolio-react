@@ -6,7 +6,7 @@ import LandingPageContainer from './components/LandigPageContainer/LandingPageCo
 import LandingPageModal from './components/LandingPageModal/LandingPageModal';
 import LandingPageFooter from './components/LandingPageFooter/LandingPageFooter';
 // import { PDFViewer } from '@react-pdf/renderer';
-import PdfDocument from './components/Pdf/PdfDocument.js';
+// import PdfDocument from './components/Pdf/PdfDocument.js';
 
 import Pdf from './components/Pdf/Pdf.js';
 
@@ -27,7 +27,7 @@ function App() {
         <div className="app-background" id={theme}>
         <div className='switch'>
                 <Pdf />
-                <PdfDocument />
+               
 
 
                 <label>{theme === "light" ? "🌑" : "🌝"}</label>

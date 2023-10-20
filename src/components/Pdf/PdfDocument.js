@@ -15,8 +15,11 @@ import React from "react";
 //   });
 
   // Create Document Component
-const PdfDocument = () => (
+const PdfDocument = ({onClose}) => (
+  <>
     <h1>Hello</h1>
+    <button onClick={onClose}>Close</button>
+  </>
     // <Document>
     //   <Page size="A4" style={styles.page}>
     //     <View style={styles.section}>
