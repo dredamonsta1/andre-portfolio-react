@@ -16,7 +16,7 @@ function Pdf() {
     return (
         <>
             <button onClick={() => setShowModal(true)}>
-                Show modal using a portal
+                My PDF
             </button>
 
             {showModal && createPortal(
