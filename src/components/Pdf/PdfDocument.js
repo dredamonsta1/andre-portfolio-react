@@ -10,7 +10,7 @@ const PdfDocument = ({onClose}) => (
     <div >
       <div className={styles.modalContent} >
         <h1>Hello</h1>
-        <button onClick={onClose}>Close</button>
+        <button className={styles.topClose} onClick={onClose}>Close</button>
       </div>
     </div>
   </div>
