@@ -15,7 +15,7 @@ function Pdf() {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>
+            <button aria-label="pdf button" onClick={() => setShowModal(true)}>
                 My PDF
             </button>
 
