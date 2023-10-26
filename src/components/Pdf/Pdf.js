@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useRef } from 'react';
+import { React, useState} from 'react';
 import { createPortal } from "react-dom";
 // import PDF from "react-pdf-js";
 import PdfDocument from './PdfDocument.js';

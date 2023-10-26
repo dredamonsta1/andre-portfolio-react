@@ -9,7 +9,7 @@ const PdfDocument = ({onClose}) => (
   <div className={styles.listWork}>
     <div >
       <div className={styles.modalContent} >
-        <h1>Hello</h1>
+        <h1 className={styles.intro}>Hello</h1>
         <button aria-label="close modal" className={styles.topClose} onClick={onClose}>X</button>
       </div>
     </div>
