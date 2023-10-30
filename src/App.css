@@ -27,7 +27,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100dvh;
-  /* border: solid 5px green; */
+  border: solid 5px red;
 }
 
 /* body {
@@ -89,6 +89,7 @@ body {
   /* background: rgba(0, 0,0, 0.7); */
   align-items: center;
   justify-content: center;
+  border: solid 5px blue;
 
   /* background-image: url(./image/mountains1.jpg); */
   /* background-repeat: no-repeat; */
@@ -169,16 +170,16 @@ ul.horizontal-list li {
     flex-direction: column;
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
-    /* border: solid 5px green; */
+    border: solid 5px green;
   }
 
   .app-background {
     /* background-image: url(./image/mountains1.jpg); */
-    /* width: 100%;
+    width: 100%; 
     height: 100%;
-    border: solid 5px green; */
+    border: solid 5px blueviolet; 
   }
 
   .container {
