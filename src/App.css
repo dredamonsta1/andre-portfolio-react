@@ -176,9 +176,8 @@ ul.horizontal-list li {
   }
 
   .app-background {
-    /* background-image: url(./image/mountains1.jpg); */
     width: 100%; 
-    height: 100%;
+    height: 60%;
     border: solid 5px blueviolet; 
   }
 
