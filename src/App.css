@@ -29,7 +29,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100dvh;
-  border: solid 5px red;
+  /* border: solid 5px red; */
 }
 
 /* body {
@@ -42,7 +42,7 @@ body {
   --line: #000;
   /* --f */
   --opaqe: rgb(112, 108, 108, .3);
-  border: solid 5px yellow
+  /* border: solid 5px yellow */
 }
 
 [data-theme='dark'] {
@@ -80,7 +80,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   /* background-color: blueviolet; */
-  border: solid 5px red;
+  /* border: solid 5px red; */
   /* transition: all .5s; */
 }
 
@@ -92,7 +92,7 @@ body {
   /* background: rgba(0, 0,0, 0.7); */
   align-items: center;
   justify-content: center;
-  border: solid 5px blue;
+  /* border: solid 5px blue; */
 
   /* background-image: url(./image/mountains1.jpg); */
   /* background-repeat: no-repeat; */
@@ -165,7 +165,7 @@ ul.horizontal-list li {
   .app {
     height: 100%;
     width: 100%;
-    border: solid 5px pink;
+    /* border: solid 5px pink; */
   }
 
   body {
@@ -175,13 +175,13 @@ ul.horizontal-list li {
     padding: 0;
     width: 100vw;
     height: 100%;
-    border: solid 5px green;
+    /* border: solid 5px green; */
   }
 
   .app-background {
     width: 100%; 
     height: 60%;
-    border: solid 5px blueviolet; 
+    /* border: solid 5px blueviolet;  */
   }
 
   .container {
@@ -195,7 +195,7 @@ ul.horizontal-list li {
     background-size: cover;
     background-attachment: fixed;
     /* background-color: blueviolet; */
-    border: solid 5px green;
+    /* border: solid 5px green; */
     /* transition: all .5s; */
   }
 
