@@ -27,9 +27,6 @@ function App() {
         <div className="app-background" id={theme}>
         <div className='switch'>
                 <Pdf />
-               
-
-
                 <label>{theme === "light" ? "🌑" : "🌝"}</label>
                 <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
               </div>
