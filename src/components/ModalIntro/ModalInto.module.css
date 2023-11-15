@@ -2,8 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
-.introModal{
+.intro{
     padding: 25px;
+    background-color: bisque;
 }
 
 
@@ -13,7 +14,7 @@
     border-radius: 4px 0 0 4px;
     text-decoration: none;
     color: var(--text-primary);
-    /* background-color: rgba(220, 20, 60, 0); */
+    /* background-color: burlywood; */
     cursor: pointer;
 
 
