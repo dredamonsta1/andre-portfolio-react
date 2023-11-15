@@ -4,30 +4,30 @@
 
 
 
-.intro {
-    border: solid var(--line) 1px;
+/* .intro { */
+    /* border: solid var(--line) 1px;
     padding: 20px 25px 20px 25px;
     border-radius: 4px 0 0 4px;
     text-decoration: none;
-    color: var(--text-primary);
+    color: var(--text-primary); */
     /* background-color: rgba(220, 20, 60, 0); */
-    cursor: pointer;
+    /* cursor: pointer; */
 
 
     /* display: block; */
-    min-width: 7.5rem;
+    /* min-width: 7.5rem;
     height: 2.75rem;
     line-height: 2.75rem;
     padding: 0 1.25rem 0 1.45rem;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    font-size: 0.8rem;
+    font-size: 0.8rem; */
     /* border-bottom: 0; */
-}
+/* } */
 
-.intro:hover, .intro:focus {
+/* .intro:hover, .intro:focus {
     background-color: var(--opaqe);
-  }
+  } */
 
 .work {
     border-top: solid var(--line) 1px;
@@ -54,31 +54,31 @@
     background-color: var(--opaqe);
   }
 
-.about {
-    border-top: solid var(--line) 1px;
+/* .about { */
+    /* border-top: solid var(--line) 1px;
     border-right: solid var(--line) 1px;
     border-bottom: solid var(--line) 1px;
     padding: 20px 27px 20px 20px;
     text-decoration: none;
     color: var(--text-primary);
     background-color: rgba(220, 20, 60, 0);
-    cursor: pointer;
+    cursor: pointer; */
 
     /* display: block; */
-    min-width: 7.5rem;
+    /* min-width: 7.5rem;
     height: 2.75rem;
     line-height: 2.75rem;
     padding: 0 1.25rem 0 1.45rem;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    font-size: 0.8rem;
+    font-size: 0.8rem; */
     /* border-bottom: 0; */
-}
+/* } */
 
-.about:hover, .about:focus {
-    background-color: var(--opaqe);
+/* .about:hover, .about:focus {
+    background-color: var(--opaqe); */
     /* background-color: blue; */
-  }
+  /* } */
 
 .contact {
     border-top: solid var(--line) 1px;
@@ -94,13 +94,13 @@
 }
 
 .contact:hover, .contact:focus {
-    /* background-color: var(--opaqe); */
-    background-color: blue;
+    background-color: var(--opaqe);
+    /* background-color: blue; */
   }
 
 .modalBtnContainer {
   padding-left: 45px;
-  background-color: blue;
+  /* background-color: blue; */
     padding-left: 7.9%;
 }
 
@@ -116,23 +116,23 @@
         /* background-color: blueviolet; */
     }
 
-        .intro{
+        /* .intro{
             border: solid var(--line) 1px;
             border-radius: 4px 4px 4px 4px;
             width: 150px;
 
-        }
+        } */
 
         .work {
             border: solid var(--line) 1px;
               border-radius: 4px 4px 4px 4px;
               width: 150px;
           }
-          .about {
+          /* .about {
             border: solid var(--line) 1px;
               border-radius: 4px 4px 4px 4px;
               width: 150px;
-          }
+          } */
           .contact {
             border: solid var(--line) 1px;
               border-radius: 4px 4px 4px 4px;
