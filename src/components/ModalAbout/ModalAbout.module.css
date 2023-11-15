@@ -2,21 +2,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 
-.intro{
-    padding: 25px;
-    /* background-color: bisque; */
-}
 
 
-.intro {
-    border: solid var(--line) 1px;
-    padding: 20px 25px 20px 25px;
-    border-radius: 4px 0 0 4px;
+.about {
+    border-top: solid var(--line) 1px;
+    border-right: solid var(--line) 1px;
+    border-bottom: solid var(--line) 1px;
+    padding: 20px 27px 20px 20px;
     text-decoration: none;
     color: var(--text-primary);
-    /* background-color: burlywood; */
+    background-color: rgba(220, 20, 60, 0);
     cursor: pointer;
-
 
     /* display: block; */
     min-width: 7.5rem;
@@ -29,18 +25,28 @@
     /* border-bottom: 0; */
 }
 
-.intro:hover,
-.intro:focus {
+.about:hover,
+.about:focus {
     background-color: var(--opaqe);
+    /* background-color: blue; */
 }
 
-
 @media all and (max-width: 565px) {
-  
-    .intro {
+    /* .modalBtnContainer {
+        contain: style layout inline-size;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-right: 13%;
+        left: 700px;
+        padding-left: 7.9%; */
+        /* background-color: blueviolet; */
+    /* } */
+
+    .about {
         border: solid var(--line) 1px;
         border-radius: 4px 4px 4px 4px;
         width: 150px;
-
     }
+
 }
