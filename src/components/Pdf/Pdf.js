@@ -8,6 +8,10 @@ import PdfDocument from './PdfDocument.js';
 // const PDFModal = ({ }) => {
 
 // }
+
+<input type="file" accept=".pdf" onChange={(event) => this.setState({ selectedFile: event.target.files[0] })} />
+
+
 const Pdf = () => {
     const [showModal, setShowModal] = useState(false);
     const onClick = () => {
