@@ -24,7 +24,7 @@ const Pdf = () => {
     return (
         <>
             <button aria-label="pdf button" onClick={onClick}>
-                My PDF
+                {/* My PDF */}
             </button>
 
             {/* <div style={{ width: '100%', height: '500px' }}>
