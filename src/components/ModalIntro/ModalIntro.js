@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import { createPortal } from 'react-dom';
-import styles from "../LandingPageModal/LandingPageModal.module.css";
+// import styles from "../LandingPageModal/LandingPageModal.module.css";
+import styles from "../ModalIntro/ModalIntro.module.css"
 import Modal from "../Modal/Modal";
 
 
@@ -10,16 +10,12 @@ const ModalIntro = ()  => {
     return (
         <>
             <button className={styles.intro} onClick={() => toggle()}>INTRO</button>
-            <Modal show={modal} close={toggle} title="INTRO">
+            <Modal className={styles.introModal} show={modal} close={toggle} title="INTRO">
                 <p>
                     Welcome to my Coding journey, where i test my progress.
                 (modal paragraph styles to be updated)
                 </p>
             </Modal>
-            {/* {createPortal(
-            <h1>INTRO</h1>,
-            document.body
-            )} */}
         </>
     )
 }

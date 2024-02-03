@@ -25,9 +25,7 @@ const Modal = ({show, close, title, children}) => {
             : null}
         </>, 
         document.getElementById("modal")
-
-    );
-        
+    );        
 };
     
     

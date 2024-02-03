@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
+
+.intro{
+    padding: 25px;
+    /* background-color: bisque; */
+    border: solid 5px green;
+}
+
+
+.intro {
+    border: solid var(--line) 1px;
+    padding: 20px 25px 20px 25px;
+    border-radius: 4px 0 0 4px;
+    text-decoration: none;
+    color: var(--text-primary);
+    /* background-color: burlywood; */
+    cursor: pointer;
+
+
+    /* display: block; */
+    min-width: 7.5rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    padding: 0 1.25rem 0 1.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    /* border-bottom: 0; */
+}
+
+.intro:hover,
+.intro:focus {
+    background-color: var(--opaqe);
+}
+
+
+@media all and (max-width: 565px) {
+  
+    .intro {
+        border: solid var(--line) 1px;
+        border-radius: 4px 4px 4px 4px;
+        width: 150px;
+
+    }
+}

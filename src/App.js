@@ -5,7 +5,11 @@ import LandingPageCircle from './components/LandingPageCircle/LandingPageCircle'
 import LandingPageContainer from './components/LandigPageContainer/LandingPageContainer';
 import LandingPageModal from './components/LandingPageModal/LandingPageModal';
 import LandingPageFooter from './components/LandingPageFooter/LandingPageFooter';
-// import Pdf from './components/Pdf/Pdf';
+// import { PDFViewer } from '@react-pdf/renderer';
+// import PdfDocument from './components/Pdf/PdfDocument.js';
+
+import Pdf from './components/Pdf/Pdf.js';
+
 import ReactSwitch from 'react-switch';
 
 import './App.css';
@@ -21,8 +25,8 @@ function App() {
   return (
       <div className='app' data-theme={theme} id={theme}>
         <div className="app-background" id={theme}>
-        {/*<Pdf >*/}
-              <div className='switch'>
+        <div className='switch'>
+                <Pdf />
                 <label>{theme === "light" ? "🌑" : "🌝"}</label>
                 <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
               </div>

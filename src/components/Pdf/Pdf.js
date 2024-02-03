@@ -1,19 +1,48 @@
-import React from 'react';
-import AndreResume from '../../image/andrefullstackR-2023';
+import { React, useState} from 'react';
+import { createPortal } from "react-dom";
+// import PDF from "react-pdf-js";
+import PdfDocument from './PdfDocument.js';
+// import { Document, Page } from 'react-pdf';
+// import andrefullstackR from '../../image'
+
+// const PDFModal = ({ }) => {
+
+// }
+
+<input type="file" accept=".pdf" onChange={(event) => this.setState({ selectedFile: event.target.files[0] })} />
 
 
 const Pdf = () => {
+    const [showModal, setShowModal] = useState(false);
+    const onClick = () => {
+        setShowModal(true)
+        console.log('clicked me')
+    }
+
+   
 
     return (
-        <div>
-        <a href={AndreResume} target='_blank'>Download Pdf</a>
+        <>
+            <button aria-label="pdf button" onClick={onClick}>
+                {/* My PDF */}
+            </button>
+
+            {/* <div style={{ width: '100%', height: '500px' }}>
+          <Document file={andrefullstackR}>
+            <Page pageNumber={1} />
+          </Document>
+        </div> */}
+
+            {showModal && createPortal(
+        <PdfDocument onClose={() => setShowModal(false)} />,
+        document.body
+      )}
+        </>
         
-        </div>
+        
 
     )
-
-
 }
 
-
 export default Pdf;
+

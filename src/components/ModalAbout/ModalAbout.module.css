@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
+
+
+
+.about {
+    border-top: solid var(--line) 1px;
+    border-right: solid var(--line) 1px;
+    border-bottom: solid var(--line) 1px;
+    padding: 20px 27px 20px 20px;
+    text-decoration: none;
+    color: var(--text-primary);
+    background-color: rgba(220, 20, 60, 0);
+    cursor: pointer;
+
+    /* display: block; */
+    min-width: 7.5rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    padding: 0 1.25rem 0 1.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    /* border-bottom: 0; */
+}
+
+.about:hover,
+.about:focus {
+    background-color: var(--opaqe);
+    /* background-color: blue; */
+}
+
+@media all and (max-width: 565px) {
+    /* .modalBtnContainer {
+        contain: style layout inline-size;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-right: 13%;
+        left: 700px;
+        padding-left: 7.9%; */
+        /* background-color: blueviolet; */
+    /* } */
+
+    .about {
+        border: solid var(--line) 1px;
+        border-radius: 4px 4px 4px 4px;
+        width: 150px;
+    }
+
+}
