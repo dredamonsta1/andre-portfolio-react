@@ -76,3 +76,13 @@
   display: flex; /* Make it a flex container for its children */
   overflow: auto; /* Add scroll if content is too big */
 }
+
+@media (max-width: 600px) {
+  .modalContent {
+    padding: 10px;
+  }
+
+  .modalTitle {
+    font-size: 1.2rem;
+  }
+}

@@ -1,8 +1,11 @@
 .viewerContainer {
-    width: 80vw;
-    height: 85vh;
+    /* Let the container fill the available space in the modal content area */
+    flex: 1;
     display: flex;
     flex-direction: column;
+    /* Ensure flex children can shrink properly without overflowing */
+    min-width: 0;
+    min-height: 0;
 }
 
 .downloadBar {
