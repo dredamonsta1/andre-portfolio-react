@@ -1,0 +1,32 @@
+.viewerContainer {
+    width: 80vw;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.downloadBar {
+    padding: 10px;
+    text-align: center;
+    background-color: #333; /* A slightly different background for the bar */
+    flex-shrink: 0;
+}
+
+.downloadButton {
+    color: white;
+    background-color: #007bff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.downloadButton:hover {
+    background-color: #0056b3;
+}
+.pdfViewer {
+    flex-grow: 1;
+    border: none;
+}

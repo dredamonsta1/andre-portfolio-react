@@ -1,113 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
-
-
-.listWork {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-transform: uppercase;
-    font-family: 'Nunito',
-    sans-serif;
-    font-weight: 200;
-    font-size: 12px;  
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    background: rgba(0, 0,0, 0.7);
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap");
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
 }
 
 .modal {
-    display: flex;
-    flex-direction: column;
-    background-color: black;
-    height: 605px;
-    width: 570px;
-    border-radius: 25px;
-    /* border: solid 5px green; */
+  background: #282c34;
+  color: white;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  /* Let the content (ResumeViewer) dictate the size, up to a max */
+  max-width: 95vw;
+  max-height: 95vh;
+  /* Add a subtle animation */
+  animation: fadeInScaleUp 0.3s ease-out;
 }
 
-.intro {
-    display: flex;
-    flex-direction: column;
-    height: 630px;
-    padding: 0;
-    border-radius: 25px;
-    text-decoration: none;
-    color: white;
-    background-color: rgba(220, 20, 60, 0);
-    transform: translateY(0);
-    opacity: 3;
-    transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
-    /* border: solid 5px green; */
+@keyframes fadeInScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .modalHeader {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #444;
+  flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .modalTitle {
-    display: inline-block;    
-    margin-top: 100px;
-    margin-left: 15px;
-    border-bottom: 1px solid white;
-}
-button {
-    background: transparent;
-    box-shadow: 0px 0px 0px transparent;
-    border: 0px solid transparent;
-    text-shadow: 0px 0px 0px transparent;
+  margin: 0;
+  font-family: "Hammersmith One", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
-.topClose {
-    display: block;
-    position: absolute;
-    overflow: hidden;
-    margin-top: 20px;
-    margin-left: 500px;
-    color: rgb(143, 237, 100);
-    padding-bottom: 5px;
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s, transform 0.2s;
 }
 
-.topClose:hover {
-    color: thistle;
-
+.closeButton:hover {
+  color: white;
+  transform: scale(1.1);
 }
 
 .modalContent {
-    padding-bottom: 50px;
-}
-
-@media all and (max-width: 600px) {
-    .listWork {
-        background: rgba(0, 0,0, 0.7);
-        height: 100%;
-    }
-
-    .modal {
-        display: flex;
-        justify-items: center;
-        height: 100%;
-        width: 100%;
-    }
-
-    .topClose{
-        top: 0.875rem;
-        left: 0.875rem;
-        width: 2.25rem;
-        height: 2.25rem;
-        background-size: 14px 14px;
-        margin-left: 80%;
-        margin-top: -10px;
-    }
-
-    .modalTitle {
-        margin-left: 45px;
-        margin-top: 50px;
-    }
+  padding: 20px;
+  flex-grow: 1; /* Allow content to take up remaining space */
+  display: flex; /* Make it a flex container for its children */
+  overflow: auto; /* Add scroll if content is too big */
 }

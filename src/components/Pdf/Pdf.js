@@ -1,48 +1,24 @@
-import { React, useState} from 'react';
-import { createPortal } from "react-dom";
-// import PDF from "react-pdf-js";
-import PdfDocument from './PdfDocument.js';
-// import { Document, Page } from 'react-pdf';
-// import andrefullstackR from '../../image'
-
-// const PDFModal = ({ }) => {
-
-// }
-
-<input type="file" accept=".pdf" onChange={(event) => this.setState({ selectedFile: event.target.files[0] })} />
-
+import { React, useState } from "react";
+import Modal from "../Modal/Modal";
+import ResumeViewer from "./ResumeViewer";
 
 const Pdf = () => {
-    const [showModal, setShowModal] = useState(false);
-    const onClick = () => {
-        setShowModal(true)
-        console.log('clicked me')
-    }
+  const [showModal, setShowModal] = useState(false);
 
-   
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
-    return (
-        <>
-            <button aria-label="pdf button" onClick={onClick}>
-                {/* My PDF */}
-            </button>
+  return (
+    <>
+      <button aria-label="view resume" onClick={openModal}>
+        View Resume
+      </button>
 
-            {/* <div style={{ width: '100%', height: '500px' }}>
-          <Document file={andrefullstackR}>
-            <Page pageNumber={1} />
-          </Document>
-        </div> */}
-
-            {showModal && createPortal(
-        <PdfDocument onClose={() => setShowModal(false)} />,
-        document.body
-      )}
-        </>
-        
-        
-
-    )
-}
+      <Modal show={showModal} close={closeModal} title="My Resume">
+        <ResumeViewer />
+      </Modal>
+    </>
+  );
+};
 
 export default Pdf;
-
