@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import Modal from "../Modal/Modal";
 import ResumeViewer from "./ResumeViewer";
+import styles from "./Pdf.module.css";
 
 const Pdf = () => {
   const [showModal, setShowModal] = useState(false);
@@ -10,7 +11,11 @@ const Pdf = () => {
 
   return (
     <>
-      <button aria-label="view resume" onClick={openModal}>
+      <button
+        aria-label="view resume"
+        onClick={openModal}
+        className={styles.resumeButton}
+      >
         View Resume
       </button>
 
