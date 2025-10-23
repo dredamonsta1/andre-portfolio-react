@@ -1,0 +1,14 @@
+.twitterContainer {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 15px;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+}
+
+.feedHeader {
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
