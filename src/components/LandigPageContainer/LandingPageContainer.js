@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./LandingPageContainer.module.css";
-// import Typewriter from "./Typewriter";
 import Typewriter from "../Typewriter/Typewriter";
 
 function LandingPageContainer() {
