@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@fortawesome/react-fontawesome": "^3.1.0",
     "@react-pdf/renderer": "^3.1.14",
     "firebase": "^9.22.0",
     "react": "^18.2.0",
