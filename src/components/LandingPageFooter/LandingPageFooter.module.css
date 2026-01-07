@@ -1,66 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
-
-/* #root {
-    height: 100%;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap");
 
 .contactIcons {
-    display: flex;
-    justify-content: space-evenly;
-    /* flex-direction: row; */
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-direction: row; */
 
-    padding-top: 25px;
-    padding-left: 0;
-    font-family: 'Nunito',
-    sans-serif;
-    text-transform: uppercase;
-    /* border: red solid 1px; */
-    
+  padding-top: 25px;
+  padding-left: 0;
+  font-family: "Nunito", sans-serif;
+  text-transform: uppercase;
+  /* border: red solid 1px; */
 }
-
-/* .linkedIn {
-    border: red solid 1px;
-} */
-
-/* .intro:hover, .intro:focus {
-    background-color: var(--opaqe);
-    border: red solid 1px;
-} */
-
-/* .work:hover, .work:focus {
-    background-color: var(--opaqe);
-} */
-
-/* .contactIcons:hover, .about:focus {
-    background-color: var(--opaqe);
-} */
-
 .dreGit {
-    border: red solid 1px;
+  border: red solid 1px;
 }
 
 .twitter:hover {
-    
-
-    -webkit-transform: rotateZ(720deg);
-      -moz-transform: rotateZ(720deg);
-      transform: rotateZ(720deg);
-      /* border: red solid 1px; */
-   
+  -webkit-transform: rotateZ(720deg);
+  -moz-transform: rotateZ(720deg);
+  transform: rotateZ(720deg);
+  /* border: red solid 1px; */
 }
 
+/* ********************************* */
 
-/* .contactIcons {
-    display: inline-block;
-    width: 200px;
-    border: 1px solid red;
-    overflow: hidden;
-    text-align: center;
-} */
+/* LandingPageFooter.module.css */
 
-/* .linkedIn:hover{
-    color: blue;
+.socialSection {
+  text-align: center;
+  /* margin-bottom: 1rem; */
+}
 
-} */
+.connectTitle {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.contactIcons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.contactIcons a {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: inline-block;
+}
+
+.contactIcons a:hover {
+  transform: translateY(-5px);
+  opacity: 0.8;
+}
+
+.footerBottom {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+  text-align: center;
+  margin-top: 0rem;
+}
+
+.copyright {
+  color: var(--text-primary);
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contactIcons {
+    gap: 1.5rem;
+  }
+
+  .connectTitle {
+    font-size: 1.25rem;
+  }
+}
