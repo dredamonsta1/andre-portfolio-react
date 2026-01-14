@@ -204,9 +204,9 @@ ul.horizontal-list li {
     top: 10px;
     height: 100px;
     width: 95%;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
-    margin-right: 30px;
+    /* margin-right: 30px; */
     background-color: #46045e00;
     /* border: solid red 5px; */
   }
@@ -225,7 +225,7 @@ ul.horizontal-list li {
   top: 10px;
   height: 100px;
   width: 95%;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
   margin-right: 30px;
   background-color: #46045e00;
