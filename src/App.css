@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap");
 
 /* * {
   width: 100%;
@@ -41,29 +41,30 @@ body {
   --text-primary: #000;
   --line: #000;
   /* --f */
-  --opaqe: rgb(112, 108, 108, .3);
+  --opaqe: rgb(112, 108, 108, 0.3);
   /* border: solid 5px yellow */
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --background: #000;
   --text-primary: #ffffff;
   --line: #ffffff;
   /* --opaqe: rgb(112, 108, 108, .3); */
 }
 
-
-
-#light {                   /* <---------------light mode context  */
+#light {
+  /* <---------------light mode context  */
   background-color: #f3ebf6;
 }
 
-#dark {                    /* <---------------dark mode context  */
+#dark {
+  /* <---------------dark mode context  */
   background-color: #46045e;
 }
 
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -98,7 +99,7 @@ body {
   /* background-repeat: no-repeat; */
   /* width: 100%;
   height: 100%; */
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .filter-shade {
@@ -109,16 +110,14 @@ body {
   background: green;
   align-items: center;
   justify-content: center;
-
-
 }
 
 .small-container {
   /* filter: blur(8px); */
- display: flex;
- flex-direction: column;
- padding: 2rem 1rem;
- width: 600px;  
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  width: 600px;
 }
 
 ul {
@@ -128,7 +127,7 @@ ul {
 li {
   list-style: none;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   gap: 0px;
   /* border: solid green 5px; */
 }
@@ -138,10 +137,9 @@ li {
   text-transform: uppercase;
   align-self: center;
   justify-content: space-evenly;
-  font-family: 'Nunito',
-  sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 200px;
-  font-size: 12px;  
+  font-size: 12px;
 }
 
 ul.horizontal-list {
@@ -150,18 +148,20 @@ ul.horizontal-list {
 }
 
 ul.horizontal-list li {
-  display: inline;   
+  display: inline;
 }
 
 @media all and (max-width: 600px) {
-  #light {                   /* <---------------light mode context  */
+  #light {
+    /* <---------------light mode context  */
     background-color: #f3ebf6;
   }
-  
-  #dark {                    /* <---------------dark mode context  */
+
+  #dark {
+    /* <---------------dark mode context  */
     background-color: #46045e;
   }
-/* app section  */
+  /* app section  */
   .app {
     height: 100%;
     width: 100%;
@@ -179,7 +179,7 @@ ul.horizontal-list li {
   }
 
   .app-background {
-    width: 100%; 
+    width: 100%;
     height: 60%;
     /* border: solid 5px blueviolet;  */
   }
@@ -199,8 +199,6 @@ ul.horizontal-list li {
     /* transition: all .5s; */
   }
 
-
-
   .switch {
     display: flex;
     top: 10px;
@@ -213,15 +211,13 @@ ul.horizontal-list li {
     /* border: solid red 5px; */
   }
 
-    .small-container {
-      /* filter: blur(8px); */
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1rem;
-      width: 100%;
-    }
-
-  
+  .small-container {
+    /* filter: blur(8px); */
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    width: 100%;
+  }
 }
 
 .switch {
@@ -236,7 +232,6 @@ ul.horizontal-list li {
   /* border: solid red 5px; */
 }
 
-
 #dark .downlineBottom {
   border-left: solid var(--line) /* green*/ 1px;
 }
@@ -244,6 +239,5 @@ ul.horizontal-list li {
 #dark :root {
   --background: black;
   --line: black;
-  --opaqe: rgb(112, 108, 108, .3);
-  
+  --opaqe: rgb(112, 108, 108, 0.3);
 }
