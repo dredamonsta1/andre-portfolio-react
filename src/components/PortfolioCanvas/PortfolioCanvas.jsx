@@ -20,7 +20,7 @@ const BIO_LINE_H  = 18
 // Particle accelerator (linear accelerator / linac) constants
 const LINAC_LEFT  = 18
 const LINAC_RIGHT = 195
-const LINAC_Y_OFF = -110   // offset from bottom of screen
+const LINAC_Y     = 80     // fixed distance from top of screen
 const LINAC_H     = 14     // rail gap
 const COIL_COUNT  = 6
 
@@ -70,8 +70,7 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
     const ctx = canvas.getContext('2d')
     ctx.scale(dpr, dpr)
 
-    // Linac position (bottom-left)
-    const LINAC_Y     = H + LINAC_Y_OFF
+    // Linac position (top-left)
     const LINAC_Y_TOP = LINAC_Y - LINAC_H / 2
     const LINAC_Y_BOT = LINAC_Y + LINAC_H / 2
     const COIL_STEP   = (LINAC_RIGHT - LINAC_LEFT) / (COIL_COUNT + 1)
@@ -538,8 +537,8 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
         startX, startY,
         x: startX, y: startY,
         endX, endY,
-        cpX: (startX + endX) / 2 + rand(-60, 60),
-        cpY: Math.min(startY, endY) - rand(60, 140),
+        cpX: (startX + endX) / 2 + rand(-40, 40),
+        cpY: (startY + endY) / 2 - rand(30, 80),
         progress: 0,
         speed: 0.028,
         trail: [],
@@ -665,7 +664,7 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
           style={{
             position: 'fixed',
             left: '10px',
-            bottom: '80px',
+            top: '55px',
             width: '210px',
             height: '65px',
             cursor: 'crosshair',

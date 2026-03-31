@@ -4,7 +4,6 @@ import styles from "./LandingPageContainer.module.css";
 function LandingPageContainer() {
   return (
     <div>
-      <div className={styles.lineUnderCircle} />
       <div className={styles.innerParagraph}>
         <h1 className={styles.innerH1}>
           |Andre Wilkinson⟩
@@ -15,7 +14,6 @@ function LandingPageContainer() {
         </p>
         <p className={styles.equation}>iħ ∂|ψ⟩/∂t = Ĥ|ψ⟩</p>
       </div>
-      <div className={styles.downlineBottom} />
     </div>
   );
 }

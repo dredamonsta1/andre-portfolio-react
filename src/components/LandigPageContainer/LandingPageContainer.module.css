@@ -11,12 +11,6 @@
   50%, 100% { opacity: 0; }
 }
 
-.lineUnderCircle {
-  height: 80px;
-  border-left: 1px solid var(--qm-border, rgba(0,212,255,0.18));
-  margin-left: 50%;
-}
-
 .innerParagraph {
   display: flex;
   flex-direction: column;
@@ -63,8 +57,3 @@
   margin-top: 0.25rem;
 }
 
-.downlineBottom {
-  height: 80px;
-  border-left: 1px solid var(--qm-border, rgba(0,212,255,0.18));
-  margin-left: 50%;
-}
