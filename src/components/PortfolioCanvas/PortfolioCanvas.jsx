@@ -11,6 +11,12 @@ const REPEL_RADIUS  = 85
 const REPEL_STR     = 5
 const OBSERVE_R     = 80   // wave-function collapse radius
 
+// Drag / chain-string physics
+const DRAG_HIT_R   = 22   // px radius to grab a letter
+const CHAIN_K      = 0.28  // spring strength toward dragged letter
+const CHAIN_DECAY  = 0.50  // falloff multiplier per chain step
+const CHAIN_REACH  = 6    // max letters in chain
+
 const NAME_FONT   = 'bold 24px Nunito, sans-serif'
 const BIO_FONT    = '12px Nunito, sans-serif'
 const EQ_FONT     = '11px Space Mono, monospace'
@@ -50,6 +56,7 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
   const mouseRef   = useRef(null)
   const rafRef     = useRef(null)
   const fireRef    = useRef(null)
+  const dragRef    = useRef({ active: false, idx: -1 })
   const [ready, setReady] = useState(false)
 
   useEffect(() => { cbRef.current = onResumeOpen })
@@ -76,9 +83,41 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
     const COIL_STEP   = (LINAC_RIGHT - LINAC_LEFT) / (COIL_COUNT + 1)
 
     function onMouseMove(e) { mouseRef.current = { x: e.clientX, y: e.clientY } }
-    function onMouseLeave() { mouseRef.current = null }
+    function onMouseLeave() {
+      mouseRef.current = null
+      onMouseUp()
+    }
+
+    function onMouseDown(e) {
+      if (e.button !== 0 || state.phase !== 'idle') return
+      if (e.target.closest('button, a, [role="button"], input, label, select')) return
+      const mx = e.clientX, my = e.clientY
+      let best = -1, bestD = DRAG_HIT_R
+      for (let i = 0; i < state.letters.length; i++) {
+        const l = state.letters[i]
+        const d = Math.hypot(l.x - mx, l.y - my)
+        if (d < bestD) { bestD = d; best = i }
+      }
+      if (best !== -1) {
+        dragRef.current = { active: true, idx: best }
+        state.letters[best].dragging = true
+        document.body.style.cursor = 'grabbing'
+      }
+    }
+
+    function onMouseUp() {
+      if (dragRef.current.active) {
+        const { idx } = dragRef.current
+        if (state.letters[idx]) state.letters[idx].dragging = false
+        dragRef.current = { active: false, idx: -1 }
+        document.body.style.cursor = ''
+      }
+    }
+
     window.addEventListener('mousemove', onMouseMove)
     window.addEventListener('mouseleave', onMouseLeave)
+    window.addEventListener('mousedown', onMouseDown)
+    window.addEventListener('mouseup', onMouseUp)
 
     const state = {
       phase: 'scatter',
@@ -197,6 +236,7 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
               font: NAME_FONT, isName: true,
               alpha: 1, baseY: ly,
               wavePhase: state.letters.length * 0.35,
+              dragging: false,
             })
           }
           x += cw
@@ -220,6 +260,7 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
               font: BIO_FONT, isName: false,
               alpha: 1, baseY: ly,
               wavePhase: state.letters.length * 0.2,
+              dragging: false,
             })
           }
           x += cw
@@ -322,10 +363,37 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       if (settled && state.frame > 80) state.phase = 'idle'
     }
 
-    // ── Idle update (wave + physics) ───────────────────────────────────────
+    // ── Idle update (wave + physics + drag chain) ─────────────────────────
 
     function updateIdle() {
-      for (const l of state.letters) {
+      const dragIdx = dragRef.current.active ? dragRef.current.idx : -1
+
+      for (let i = 0; i < state.letters.length; i++) {
+        const l = state.letters[i]
+
+        // Dragged letter snaps to cursor
+        if (l.dragging) {
+          const m = mouseRef.current
+          if (m) {
+            l.x += (m.x - l.x) * 0.45
+            l.y += (m.y - l.y) * 0.45
+            l.vx = 0
+            l.vy = 0
+          }
+          continue
+        }
+
+        // Chain pull: spring toward dragged letter, strength decays per step
+        if (dragIdx >= 0) {
+          const chainDist = Math.abs(i - dragIdx)
+          if (chainDist > 0 && chainDist <= CHAIN_REACH) {
+            const dragged = state.letters[dragIdx]
+            const f = CHAIN_K * Math.pow(CHAIN_DECAY, chainDist - 1)
+            l.vx += (dragged.x - l.x) * f
+            l.vy += (dragged.y - l.y) * f
+          }
+        }
+
         const ty = l.isName
           ? l.baseY + Math.sin(state.frame * 0.04 + l.wavePhase) * 3
           : l.ty
@@ -646,6 +714,10 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       cancelAnimationFrame(rafRef.current)
       window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('mouseleave', onMouseLeave)
+      window.removeEventListener('mousedown', onMouseDown)
+      window.removeEventListener('mouseup', onMouseUp)
+      dragRef.current = { active: false, idx: -1 }
+      document.body.style.cursor = ''
       const para = document.querySelector('[class*="innerParagraph"]')
       if (para) para.style.opacity = '1'
     }
