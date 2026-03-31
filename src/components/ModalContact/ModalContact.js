@@ -24,7 +24,7 @@ const ModalContact = () => {
 
     return(
         <>
-            <button className={styles.contact} onClick={() => toggle()}>CONTACT</button>
+            <button className={styles.contact} onClick={() => toggle()}>|Contact⟩</button>
             <Modal show={modal} close={toggle} title="Contact">
 
                 <form className={styles.contactForm} ref={form} onSubmit={sendEmail}>

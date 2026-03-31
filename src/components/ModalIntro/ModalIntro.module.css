@@ -1,47 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
-
-.intro{
-    padding: 25px;
-    /* background-color: bisque; */
-    border: solid 5px green;
-}
-
-
 .intro {
-    border: solid var(--line) 1px;
-    padding: 20px 25px 20px 25px;
-    border-radius: 4px 0 0 4px;
-    text-decoration: none;
-    color: var(--text-primary);
-    /* background-color: burlywood; */
-    cursor: pointer;
-
-
-    /* display: block; */
-    min-width: 7.5rem;
-    height: 2.75rem;
-    line-height: 2.75rem;
-    padding: 0 1.25rem 0 1.45rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    font-size: 0.8rem;
-    /* border-bottom: 0; */
+  background: transparent;
+  color: var(--qm-text, #c8d8ff);
+  border: 1px solid var(--qm-border, rgba(0,212,255,0.18));
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  min-width: 7rem;
+  height: 2.6rem;
+  line-height: 2.6rem;
+  padding: 0 1.1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .intro:hover,
 .intro:focus {
-    background-color: var(--opaqe);
+  background: rgba(0,212,255,0.07);
+  border-color: var(--qm-cyan, #00d4ff);
+  color: var(--qm-cyan, #00d4ff);
+  box-shadow: 0 0 10px rgba(0,212,255,0.2);
+  outline: none;
+  position: relative;
+  z-index: 1;
 }
 
+.introContent p {
+  color: var(--qm-text, #c8d8ff);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
 
-@media all and (max-width: 565px) {
-  
-    .intro {
-        border: solid var(--line) 1px;
-        border-radius: 4px 4px 4px 4px;
-        width: 150px;
-
-    }
+@media (max-width: 565px) {
+  .intro {
+    border-radius: 4px;
+    border: 1px solid var(--qm-border, rgba(0,212,255,0.18));
+    width: 160px;
+  }
 }

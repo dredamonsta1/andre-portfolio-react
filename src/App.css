@@ -1,73 +1,47 @@
-@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Istok+Web:wght@400;700&family=Lato:wght@100;300;400;700&family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Nunito:wght@200;300;400&family=Lato:wght@100;300;400;700&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap");
-
-/* * {
-  width: 100%;
-  height: 100%;
-} */
-.resume-corner {
-  position: fixed;
-  top: 1rem;
-  right: 1.5rem;
-  z-index: 100;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 3rem 2rem;
-  /* background-color: #46045e; */
-}
-
-#dark .app {
-  width: 100%;
-  height: 100%;
-  background-color: var(--background);
-  padding: 3rem 2rem;
-}
-
-body {
-  /* display: flex;
-  flex-direction: column; */
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100dvh;
-  /* border: solid 5px red; */
-}
-
-/* body {
-  flex-grow: 1;
-} */
+/* ── Quantum Design System ─────────────────────────────────────────────── */
 
 :root {
-  --background: #ffffff;
-  --text-primary: #000;
-  --line: #000;
-  /* --f */
-  --opaqe: rgb(112, 108, 108, 0.3);
-  /* border: solid 5px yellow */
+  --qm-bg:      #050510;
+  --qm-bg2:     #0a0a1e;
+  --qm-surface: #0d1030;
+  --qm-border:  rgba(0,212,255,0.18);
+  --qm-cyan:    #00d4ff;
+  --qm-purple:  #7b2fff;
+  --qm-green:   #00ff88;
+  --qm-text:    #c8d8ff;
+  --qm-dim:     #4a5a8a;
+  --qm-glow-c:  rgba(0,212,255,0.18);
+  --qm-glow-p:  rgba(123,47,255,0.18);
+
+  /* back-compat aliases */
+  --background:   var(--qm-bg);
+  --text-primary: var(--qm-text);
+  --line:         var(--qm-border);
+  --opaqe:        rgba(0,212,255,0.08);
 }
 
-[data-theme="dark"] {
-  --background: #000;
-  --text-primary: #ffffff;
-  --line: #ffffff;
-  /* --opaqe: rgb(112, 108, 108, .3); */
+[data-theme="light"] {
+  --qm-bg:      #f0f4ff;
+  --qm-bg2:     #e4eaff;
+  --qm-surface: #ffffff;
+  --qm-border:  rgba(0,100,180,0.3);
+  --qm-cyan:    #0077aa;
+  --qm-purple:  #5500cc;
+  --qm-green:   #007744;
+  --qm-text:    #0a1030;
+  --qm-dim:     #3a4a7a;
+  --qm-glow-c:  rgba(0,100,180,0.12);
+  --qm-glow-p:  rgba(85,0,204,0.12);
+
+  --background:   var(--qm-bg);
+  --text-primary: var(--qm-text);
+  --line:         var(--qm-border);
+  --opaqe:        rgba(0,100,180,0.06);
 }
 
-#light {
-  /* <---------------light mode context  */
-  background-color: #f3ebf6;
-}
-
-#dark {
-  /* <---------------dark mode context  */
-  background-color: #46045e;
-}
+/* ── Reset ─────────────────────────────────────────────────────────────── */
 
 *,
 *::before,
@@ -77,19 +51,30 @@ body {
   box-sizing: border-box;
 }
 
-.container {
-  /* filter: blur(8px); */
+ul  { display: flex; }
+li  { list-style: none; display: flex; flex-wrap: wrap; }
+
+/* ── Body / Root ────────────────────────────────────────────────────────── */
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100dvh;
+  background: var(--qm-bg);
+  color: var(--qm-text);
+  font-family: 'Nunito', sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ── App shell ──────────────────────────────────────────────────────────── */
+
+.app {
   display: flex;
-  justify-content: space-between;
-  position: relative;
+  flex-direction: column;
+  width: 100%;
   height: 100%;
-  /* background-repeat: no-repeat; */
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  /* background-color: blueviolet; */
-  /* border: solid 5px red; */
-  /* transition: all .5s; */
+  padding: 3rem 2rem;
 }
 
 .app-background {
@@ -97,154 +82,76 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  /* background: rgba(0, 0,0, 0.7); */
   align-items: center;
   justify-content: center;
-  /* border: solid 5px blue; */
-
-  /* background-image: url(./image/mountains1.jpg); */
-  /* background-repeat: no-repeat; */
-  /* width: 100%;
-  height: 100%; */
-  transition: all 0.5s;
+  transition: background 0.4s ease;
 }
 
-.filter-shade {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  /* background: rgba(171, 6, 6, 0.314); */
-  background: green;
-  align-items: center;
-  justify-content: center;
-}
+/* theme ids used by existing JS */
+#dark  { background: var(--qm-bg); }
+#light { background: var(--qm-bg); }
+
+/* ── Small container ────────────────────────────────────────────────────── */
 
 .small-container {
-  /* filter: blur(8px); */
   display: flex;
   flex-direction: column;
   padding: 2rem 1rem;
   width: 600px;
 }
 
-ul {
-  display: flex;
+/* ── Resume corner ──────────────────────────────────────────────────────── */
+
+.resume-corner {
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 100;
 }
 
-li {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0px;
-  /* border: solid green 5px; */
+/* ── Bottom bar / switch ────────────────────────────────────────────────── */
+
+.bottom-bar {
+  margin-top: 0.5rem;
 }
 
+.switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  gap: 1rem;
+}
+
+.toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Contact icons wrapper ──────────────────────────────────────────────── */
+
+.contact-icons { width: 100%; }
+
+/* ── Horizontal list util ───────────────────────────────────────────────── */
+
+ul.horizontal-list         { list-style: none; padding-top: 0; }
+ul.horizontal-list li      { display: inline; }
 .list-work {
   display: flex;
   text-transform: uppercase;
   align-self: center;
   justify-content: space-evenly;
-  font-family: "Nunito", sans-serif;
-  font-weight: 200px;
+  font-family: 'Nunito', sans-serif;
   font-size: 12px;
 }
 
-ul.horizontal-list {
-  list-style: none;
-  padding-top: 0px;
-}
+/* ── Responsive ─────────────────────────────────────────────────────────── */
 
-ul.horizontal-list li {
-  display: inline;
-}
-
-@media all and (max-width: 600px) {
-  #light {
-    /* <---------------light mode context  */
-    background-color: #f3ebf6;
-  }
-
-  #dark {
-    /* <---------------dark mode context  */
-    background-color: #46045e;
-  }
-  /* app section  */
-  .app {
-    height: 100%;
-    width: 100%;
-    /* border: solid 5px pink; */
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100%;
-    /* border: solid 5px green; */
-  }
-
-  .app-background {
-    width: 100%;
-    height: 60%;
-    /* border: solid 5px blueviolet;  */
-  }
-
-  .container {
-    /* filter: blur(8px); */
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    height: 100%;
-    /* background-repeat: no-repeat; */
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    /* background-color: blueviolet; */
-    /* border: solid 5px green; */
-    /* transition: all .5s; */
-  }
-
-  .switch {
-    display: flex;
-    top: 10px;
-    height: 100px;
-    width: 95%;
-    justify-content: center;
-    align-items: center;
-    /* margin-right: 30px; */
-    background-color: #46045e00;
-    /* border: solid red 5px; */
-  }
-
-  .small-container {
-    /* filter: blur(8px); */
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 1rem;
-    width: 100%;
-  }
-}
-
-.switch {
-  display: flex;
-  top: 10px;
-  height: 100px;
-  width: 95%;
-  justify-content: center;
-  align-items: center;
-  margin-right: 30px;
-  background-color: #46045e00;
-  /* border: solid red 5px; */
-}
-
-#dark .downlineBottom {
-  border-left: solid var(--line) /* green*/ 1px;
-}
-
-#dark :root {
-  --background: black;
-  --line: black;
-  --opaqe: rgb(112, 108, 108, 0.3);
+@media (max-width: 600px) {
+  .app          { height: 100%; width: 100%; }
+  .app-background { width: 100%; }
+  .small-container { width: 100%; }
+  .switch       { width: 95%; height: 100px; }
 }

@@ -10,10 +10,10 @@ import ReactSwitch from "react-switch";
 import "./App.css";
 
 function App() {
-  const [theme, setTheme] = useLocalStorage("theme", "light");
+  const [theme, setTheme] = useLocalStorage("theme", "dark");
   const pdfRef = useRef(null);
 
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
   const handleResumeOpen = useCallback(() => {
     pdfRef.current?.openModal();
@@ -23,7 +23,6 @@ function App() {
     <div className="app" data-theme={theme} id={theme}>
       <PortfolioCanvas theme={theme} onResumeOpen={handleResumeOpen} />
 
-      {/* Resume button fixed top-right — catapult aims at it */}
       <div className="resume-corner">
         <Pdf ref={pdfRef} />
       </div>
@@ -36,12 +35,21 @@ function App() {
           <div className="bottom-bar">
             <div className="switch">
               <div className="toggle-group">
-                <label>{theme === "light" ? "🌑" : "🌝"}</label>
-                <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+                <label style={{ color: 'var(--qm-text)', fontSize: '1.1rem' }}>
+                  {theme === "dark" ? "☀️" : "🌑"}
+                </label>
+                <ReactSwitch
+                  onChange={toggleTheme}
+                  checked={theme === "dark"}
+                  onColor="#7b2fff"
+                  offColor="#0077aa"
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                />
               </div>
             </div>
           </div>
-          <div className="contact-icons" alt="social media icons">
+          <div className="contact-icons">
             <LandingPageFooter />
           </div>
         </div>

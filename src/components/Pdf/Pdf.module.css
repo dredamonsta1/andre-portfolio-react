@@ -1,20 +1,21 @@
 .resumeButton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-family: 'Lato', sans-serif;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  background: transparent;
+  color: var(--qm-cyan, #00d4ff);
+  border: 1px solid var(--qm-cyan, #00d4ff);
+  padding: 8px 18px;
+  border-radius: 3px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 0 8px rgba(0,212,255,0.2);
 }
 
 .resumeButton:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: rgba(0,212,255,0.1);
+  box-shadow: 0 0 16px rgba(0,212,255,0.4), 0 0 32px rgba(0,212,255,0.15);
+  transform: translateY(-1px);
 }

@@ -35,7 +35,7 @@ const ModalIntro = () => {
   return (
     <>
       <button className={styles.intro} onClick={toggle}>
-        INTRO
+        |Intro⟩
       </button>
       <Modal show={modal} close={toggle} title="A Little About Me & My Journey">
         <div className={styles.introContent}>

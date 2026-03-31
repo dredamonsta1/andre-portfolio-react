@@ -1,44 +1,55 @@
 import { useEffect, useRef, useState } from 'react'
 import { prepareWithSegments, layoutWithLines } from '@chenglou/pretext'
 
-const NAME = 'ANDRE WILKINSON'
-const BIO = 'Fullstack trained frontend dev just enjoying learning everyday, embracing the chaos.'
-const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*'
-const SPRING_K = 0.08
-const DAMPING = 0.75
-const REPEL_RADIUS = 85
-const REPEL_STRENGTH = 5
-const NAME_FONT = 'bold 28px Nunito, sans-serif'
-const BIO_FONT = '13px Nunito, sans-serif'
-const NAME_LINE_H = 40
-const BIO_LINE_H = 20
+const NAME  = '|ANDRE WILKINSON\u27E9'  // ⟩ = U+27E9
+const BIO   = 'Fullstack trained frontend dev just enjoying learning everyday, embracing the chaos.'
+const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*\u03C8\u03A8\u0127\u0394\u2207\u03B1\u03B2\u03B3'
 
-// Catapult arm angles (canvas y-down coords)
-// Loaded: arm tip pointing upper-left (cup is behind, ready to throw right)
-// Released: arm tip pointing upper-right (just fired)
-const ARM_LOADED   = -2.3
-const ARM_RELEASED = -0.8
-const ARM_LENGTH   = 50
-const CW_LENGTH    = 15   // counterweight arm
+const SPRING_K      = 0.08
+const DAMPING       = 0.75
+const REPEL_RADIUS  = 85
+const REPEL_STR     = 5
+const OBSERVE_R     = 80   // wave-function collapse radius
 
-function rand(a, b) { return a + Math.random() * (b - a) }
-function pick(arr) { return arr[Math.floor(Math.random() * arr.length)] }
+const NAME_FONT   = 'bold 24px Nunito, sans-serif'
+const BIO_FONT    = '12px Nunito, sans-serif'
+const EQ_FONT     = '11px Space Mono, monospace'
+const NAME_LINE_H = 36
+const BIO_LINE_H  = 18
+
+// Particle accelerator (linear accelerator / linac) constants
+const LINAC_LEFT  = 18
+const LINAC_RIGHT = 195
+const LINAC_Y_OFF = -110   // offset from bottom of screen
+const LINAC_H     = 14     // rail gap
+const COIL_COUNT  = 6
+
+function rand(a, b)  { return a + Math.random() * (b - a) }
 
 function bezierPoint(t, sx, sy, cpx, cpy, ex, ey) {
   const mt = 1 - t
   return {
-    x: mt * mt * sx + 2 * mt * t * cpx + t * t * ex,
-    y: mt * mt * sy + 2 * mt * t * cpy + t * t * ey,
+    x: mt*mt*sx + 2*mt*t*cpx + t*t*ex,
+    y: mt*mt*sy + 2*mt*t*cpy + t*t*ey,
   }
 }
 
+// Linearly interpolate between two RGB arrays
+function lerpRgb(c1, c2, t) {
+  return [
+    Math.round(c1[0] + (c2[0]-c1[0])*t),
+    Math.round(c1[1] + (c2[1]-c1[1])*t),
+    Math.round(c1[2] + (c2[2]-c1[2])*t),
+  ]
+}
+
 export default function PortfolioCanvas({ theme, onResumeOpen }) {
-  const canvasRef   = useRef(null)
-  const cbRef       = useRef(onResumeOpen)
-  const themeRef    = useRef(theme)
-  const mouseRef    = useRef(null)
-  const rafRef      = useRef(null)
-  const fireRef     = useRef(null)   // called from JSX click handler → updates canvas state
+  const canvasRef  = useRef(null)
+  const cbRef      = useRef(onResumeOpen)
+  const themeRef   = useRef(theme)
+  const mouseRef   = useRef(null)
+  const rafRef     = useRef(null)
+  const fireRef    = useRef(null)
   const [ready, setReady] = useState(false)
 
   useEffect(() => { cbRef.current = onResumeOpen })
@@ -59,10 +70,11 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
     const ctx = canvas.getContext('2d')
     ctx.scale(dpr, dpr)
 
-    // Catapult position — lower-left corner
-    const CAT_PIVOT_X = 110
-    const CAT_PIVOT_Y = H - 130
-    const CAT_BASE_Y  = CAT_PIVOT_Y + 32
+    // Linac position (bottom-left)
+    const LINAC_Y     = H + LINAC_Y_OFF
+    const LINAC_Y_TOP = LINAC_Y - LINAC_H / 2
+    const LINAC_Y_BOT = LINAC_Y + LINAC_H / 2
+    const COIL_STEP   = (LINAC_RIGHT - LINAC_LEFT) / (COIL_COUNT + 1)
 
     function onMouseMove(e) { mouseRef.current = { x: e.clientX, y: e.clientY } }
     function onMouseLeave() { mouseRef.current = null }
@@ -72,34 +84,56 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
     const state = {
       phase: 'scatter',
       letters: [],
-      projectile: null,   // single catapult shot
+      projectile: null,
       particles: [],
       frame: 0,
-      catapult: {
-        angle: ARM_LOADED,
-        animating: false,
-        animFrame: 0,
+      schroY: 0,
+      centerX: W / 2,
+      linac: {
+        ready: true,
+        inTube: false,
+        particleX: LINAC_LEFT,
+        particleSpeed: 0,
+        char: 'e',
         launched: false,
-        isLoaded: true,
       },
     }
 
+    // Hide DOM text — canvas draws it
     const innerPara = document.querySelector('[class*="innerParagraph"]')
     if (innerPara) {
       innerPara.style.opacity = '0'
       innerPara.style.transition = 'opacity 0.7s ease'
     }
 
-    function textColor() {
-      return themeRef.current === 'dark' ? '#ffffff' : '#000000'
-    }
-    function accentColor(a) {
-      return themeRef.current === 'dark'
-        ? `rgba(200,150,255,${a})`
-        : `rgba(70,4,94,${a})`
+    // ── Color helpers ──────────────────────────────────────────────────────
+
+    function textRgb() {
+      return themeRef.current === 'dark' ? [200, 216, 255] : [10, 16, 48]
     }
 
-    // ── Physics ───────────────────────────────────────────────────────────────
+    function textColor() {
+      const [r,g,b] = textRgb()
+      return `rgb(${r},${g},${b})`
+    }
+
+    function cyanColor(a) {
+      return themeRef.current === 'dark'
+        ? `rgba(0,212,255,${a})`
+        : `rgba(0,119,170,${a})`
+    }
+
+    function cyanRgb() {
+      return themeRef.current === 'dark' ? [0,212,255] : [0,119,170]
+    }
+
+    function purpleColor(a) {
+      return themeRef.current === 'dark'
+        ? `rgba(123,47,255,${a})`
+        : `rgba(85,0,204,${a})`
+    }
+
+    // ── Physics ────────────────────────────────────────────────────────────
 
     function applyPhysics(l, targetX, targetY) {
       l.vx += (targetX - l.x) * SPRING_K
@@ -109,11 +143,11 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       if (m) {
         const dx   = l.x - m.x
         const dy   = l.y - m.y
-        const dist = Math.sqrt(dx * dx + dy * dy)
+        const dist = Math.sqrt(dx*dx + dy*dy)
         if (dist < REPEL_RADIUS && dist > 0.5) {
-          const force = (1 - dist / REPEL_RADIUS) * REPEL_STRENGTH
-          l.vx += (dx / dist) * force
-          l.vy += (dy / dist) * force
+          const f = (1 - dist / REPEL_RADIUS) * REPEL_STR
+          l.vx += (dx / dist) * f
+          l.vy += (dy / dist) * f
         }
       }
 
@@ -123,21 +157,21 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       l.y  += l.vy
     }
 
-    // ── Letter targets ────────────────────────────────────────────────────────
+    // ── Build letter targets ───────────────────────────────────────────────
 
     function buildLetters() {
       const container = document.querySelector('.small-container')
       if (!container) return
 
-      const cRect   = container.getBoundingClientRect()
-      const padH    = 32
-      const textW   = cRect.width - padH * 2
+      const cRect    = container.getBoundingClientRect()
+      const padH     = 32
+      const textW    = cRect.width - padH * 2
       const textLeft = cRect.left + padH
 
       const para  = document.querySelector('[class*="innerParagraph"]')
       const pRect = para ? para.getBoundingClientRect() : null
-      const nameStartY = pRect ? pRect.top + 48 + 28 : cRect.top + 260
-      const bioStartY  = nameStartY + NAME_LINE_H + 20
+      const nameY = pRect ? pRect.top + 40 + 24 : cRect.top + 260
+      const bioY  = nameY + NAME_LINE_H + 16
 
       const namePrepared = prepareWithSegments(NAME, NAME_FONT)
       const { lines: nameLines } = layoutWithLines(namePrepared, textW, NAME_LINE_H)
@@ -147,9 +181,10 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
 
       ctx.save()
 
+      // Name
       for (let li = 0; li < nameLines.length; li++) {
         const line  = nameLines[li]
-        const lineY = nameStartY + li * NAME_LINE_H
+        const ly    = nameY + li * NAME_LINE_H
         const lineX = textLeft + (textW - line.width) / 2
         ctx.font = NAME_FONT
         let x = lineX
@@ -157,21 +192,22 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
           const cw = ctx.measureText(char).width
           if (char.trim()) {
             state.letters.push({
-              char,
-              x: rand(0, W), y: rand(-H * 0.5, H * 1.5),
-              vx: rand(-12, 12), vy: rand(-12, 12),
-              tx: x, ty: lineY,
-              font: NAME_FONT, isName: true, alpha: 1,
-              baseY: lineY, wavePhase: state.letters.length * 0.35,
+              char, x: rand(0, W), y: rand(-H*.5, H*1.5),
+              vx: rand(-12,12), vy: rand(-12,12),
+              tx: x, ty: ly,
+              font: NAME_FONT, isName: true,
+              alpha: 1, baseY: ly,
+              wavePhase: state.letters.length * 0.35,
             })
           }
           x += cw
         }
       }
 
+      // Bio
       for (let li = 0; li < bioLines.length; li++) {
         const line  = bioLines[li]
-        const lineY = bioStartY + li * BIO_LINE_H
+        const ly    = bioY + li * BIO_LINE_H
         const lineX = textLeft + (textW - line.width) / 2
         ctx.font = BIO_FONT
         let x = lineX
@@ -179,36 +215,33 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
           const cw = ctx.measureText(char).width
           if (char.trim()) {
             state.letters.push({
-              char,
-              x: rand(0, W), y: rand(-H * 0.5, H * 1.5),
-              vx: rand(-7, 7), vy: rand(-7, 7),
-              tx: x, ty: lineY,
-              font: BIO_FONT, isName: false, alpha: 1,
-              baseY: lineY, wavePhase: state.letters.length * 0.2,
+              char, x: rand(0, W), y: rand(-H*.5, H*1.5),
+              vx: rand(-7,7), vy: rand(-7,7),
+              tx: x, ty: ly,
+              font: BIO_FONT, isName: false,
+              alpha: 1, baseY: ly,
+              wavePhase: state.letters.length * 0.2,
             })
           }
           x += cw
         }
       }
 
+      // Store position for Schrödinger equation (drawn after scatter)
+      state.schroY  = bioY + bioLines.length * BIO_LINE_H + 18
+      state.centerX = textLeft + textW / 2
+
       ctx.restore()
     }
 
-    // ── Catapult fire (called from JSX via fireRef) ───────────────────────────
-
-    fireRef.current = function fire() {
-      const cat = state.catapult
-      if (cat.animating || !cat.isLoaded) return
-      cat.animating = true
-      cat.animFrame = 0
-      cat.launched  = false
-    }
-
-    // ── Main loop ─────────────────────────────────────────────────────────────
+    // ── Main loop ──────────────────────────────────────────────────────────
 
     function loop() {
       state.frame++
       ctx.clearRect(0, 0, W, H)
+
+      // Background interference waves
+      drawInterference()
 
       if (state.phase === 'scatter') {
         updateScatter()
@@ -216,10 +249,16 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
         updateIdle()
       }
 
+      drawObservationIndicator()
       drawLetters()
+
+      if (state.phase !== 'scatter') {
+        drawSchrodinger()
+      }
+
       drawCircleGlow()
-      updateCatapultAnim()
-      drawCatapult()
+      updateLinacAnim()
+      drawLinac()
       updateProjectile()
       drawProjectile()
       drawParticles()
@@ -227,6 +266,53 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
 
       rafRef.current = requestAnimationFrame(loop)
     }
+
+    // ── Interference background ────────────────────────────────────────────
+
+    function drawInterference() {
+      const s1 = { x: W * 0.04, y: H * 0.43 }
+      const s2 = { x: W * 0.04, y: H * 0.57 }
+      const wl = 90
+      const speed = 0.5
+      const off = (state.frame * speed) % wl
+
+      ctx.save()
+      for (let r = off; r < W * 1.5; r += wl) {
+        ctx.lineWidth = 0.5
+
+        ctx.beginPath()
+        ctx.arc(s1.x, s1.y, r, 0, Math.PI * 2)
+        ctx.strokeStyle = cyanColor(0.022)
+        ctx.stroke()
+
+        ctx.beginPath()
+        ctx.arc(s2.x, s2.y, r, 0, Math.PI * 2)
+        ctx.strokeStyle = purpleColor(0.018)
+        ctx.stroke()
+      }
+      ctx.restore()
+    }
+
+    // ── Observation indicator ──────────────────────────────────────────────
+
+    function drawObservationIndicator() {
+      const m = mouseRef.current
+      if (!m) return
+      ctx.beginPath()
+      ctx.arc(m.x, m.y, OBSERVE_R, 0, Math.PI * 2)
+      ctx.strokeStyle = cyanColor(0.07)
+      ctx.lineWidth = 1
+      ctx.setLineDash([4, 6])
+      ctx.stroke()
+      ctx.setLineDash([])
+
+      ctx.beginPath()
+      ctx.arc(m.x, m.y, 2, 0, Math.PI * 2)
+      ctx.fillStyle = cyanColor(0.35)
+      ctx.fill()
+    }
+
+    // ── Scatter update ─────────────────────────────────────────────────────
 
     function updateScatter() {
       let settled = true
@@ -237,6 +323,8 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       if (settled && state.frame > 80) state.phase = 'idle'
     }
 
+    // ── Idle update (wave + physics) ───────────────────────────────────────
+
     function updateIdle() {
       for (const l of state.letters) {
         const ty = l.isName
@@ -246,18 +334,51 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       }
     }
 
-    // ── Draw letters ──────────────────────────────────────────────────────────
+    // ── Draw letters with wave-function collapse glow ──────────────────────
 
     function drawLetters() {
-      const color = textColor()
+      const m      = mouseRef.current
+      const tRgb   = textRgb()
+      const cRgb   = cyanRgb()
+
       for (const l of state.letters) {
-        ctx.font     = l.font
+        let color = textColor()
+
+        if (m) {
+          const dx   = l.x - m.x
+          const dy   = l.y - m.y
+          const dist = Math.sqrt(dx*dx + dy*dy)
+          if (dist < OBSERVE_R) {
+            const t   = (1 - dist / OBSERVE_R) * 0.75
+            const rgb = lerpRgb(tRgb, cRgb, t)
+            color = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`
+
+            // Glow — wave-function collapse effect
+            ctx.shadowColor = cyanColor(0.8)
+            ctx.shadowBlur  = 10 * (1 - dist / OBSERVE_R)
+          }
+        }
+
+        ctx.font      = l.font
         ctx.fillStyle = color
         ctx.fillText(l.char, l.x, l.y)
+        ctx.shadowBlur = 0
       }
     }
 
-    // ── Circle glow ───────────────────────────────────────────────────────────
+    // ── Schrödinger equation ───────────────────────────────────────────────
+
+    function drawSchrodinger() {
+      ctx.save()
+      ctx.font      = EQ_FONT
+      ctx.fillStyle = cyanColor(0.35)
+      ctx.textAlign = 'center'
+      ctx.fillText('i\u0127 \u2202|\u03C8\u27E9/\u2202t = \u0124|\u03C8\u27E9', state.centerX, state.schroY)
+      ctx.textAlign = 'left'
+      ctx.restore()
+    }
+
+    // ── Circle glow ────────────────────────────────────────────────────────
 
     function drawCircleGlow() {
       const el = document.querySelector('[class*="circle"]')
@@ -270,81 +391,168 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
 
       const r1 = radius + 10 + pulse * 6
       const r2 = r1 + 14 + Math.sin(state.frame * 0.03) * 4
-      const a1 = 0.4 + pulse * 0.15
-      const a2 = 0.15 + pulse * 0.07
 
       ctx.beginPath()
       ctx.arc(cx, cy, r1, 0, Math.PI * 2)
-      ctx.strokeStyle = accentColor(a1)
-      ctx.lineWidth   = 2
+      ctx.strokeStyle = cyanColor(0.4 + pulse * 0.15)
+      ctx.lineWidth   = 1.5
       ctx.stroke()
 
       ctx.beginPath()
       ctx.arc(cx, cy, r2, 0, Math.PI * 2)
-      ctx.strokeStyle = accentColor(a2)
+      ctx.strokeStyle = purpleColor(0.18 + pulse * 0.07)
       ctx.lineWidth   = 1
       ctx.stroke()
     }
 
-    // ── Catapult arm animation ────────────────────────────────────────────────
+    // ── Linac (particle accelerator) ───────────────────────────────────────
 
-    function updateCatapultAnim() {
-      const cat = state.catapult
-      if (!cat.animating) return
+    fireRef.current = function fire() {
+      const l = state.linac
+      if (!l.ready || l.inTube) return
+      l.ready        = false
+      l.inTube       = true
+      l.particleX    = LINAC_LEFT
+      l.particleSpeed = 0.6
+      l.char         = CHARS[Math.floor(Math.random() * CHARS.length)]
+      l.launched     = false
+    }
 
-      cat.animFrame++
-      const t    = Math.min(cat.animFrame / 18, 1)
-      const ease = 1 - Math.pow(1 - t, 3)          // ease-out cubic
-      cat.angle  = ARM_LOADED + (ARM_RELEASED - ARM_LOADED) * ease
+    function updateLinacAnim() {
+      const l = state.linac
+      if (!l.inTube) return
 
-      // Launch letter at 55% of swing
-      if (!cat.launched && cat.animFrame >= 10) {
-        cat.launched = true
-        launchProjectile()
-      }
+      l.particleSpeed *= 1.07
+      l.particleX     += l.particleSpeed
 
-      if (t >= 1) {
-        cat.animating = false
-        cat.isLoaded  = false
-        // Small bounce-back
-        cat.angle = ARM_RELEASED + 0.15
+      if (l.particleX >= LINAC_RIGHT) {
+        l.inTube   = false
+        l.launched = true
+        launchProjectile(LINAC_RIGHT + 10, LINAC_Y)
       }
     }
 
-    function launchProjectile() {
+    function drawLinac() {
+      const l   = state.linac
+      const yT  = LINAC_Y_TOP
+      const yB  = LINAC_Y_BOT
+      const cy  = LINAC_Y
+
+      ctx.save()
+
+      // Rails
+      ctx.strokeStyle = cyanColor(0.55)
+      ctx.lineWidth   = 1.5
+
+      ctx.beginPath()
+      ctx.moveTo(LINAC_LEFT, yT)
+      ctx.lineTo(LINAC_RIGHT, yT)
+      ctx.stroke()
+
+      ctx.beginPath()
+      ctx.moveTo(LINAC_LEFT, yB)
+      ctx.lineTo(LINAC_RIGHT, yB)
+      ctx.stroke()
+
+      // Nozzle tip
+      ctx.beginPath()
+      ctx.moveTo(LINAC_RIGHT,    yT - 4)
+      ctx.lineTo(LINAC_RIGHT + 12, cy)
+      ctx.lineTo(LINAC_RIGHT,    yB + 4)
+      ctx.stroke()
+
+      // Acceleration coils
+      for (let i = 1; i <= COIL_COUNT; i++) {
+        const cx = LINAC_LEFT + i * COIL_STEP
+        const isActive = l.inTube && l.particleX > cx - 5 && l.particleX <= cx + 10
+        ctx.strokeStyle = cyanColor(isActive ? 0.95 : 0.3)
+        ctx.lineWidth   = isActive ? 2.5 : 1.5
+
+        if (isActive) {
+          ctx.shadowColor = cyanColor(1)
+          ctx.shadowBlur  = 8
+        }
+
+        ctx.beginPath()
+        ctx.moveTo(cx, yT - 7)
+        ctx.lineTo(cx, yB + 7)
+        ctx.stroke()
+        ctx.shadowBlur = 0
+      }
+
+      // Particle in tube
+      if (l.inTube) {
+        const px       = l.particleX
+        const progress = (px - LINAC_LEFT) / (LINAC_RIGHT - LINAC_LEFT)
+        const gr       = ctx.createRadialGradient(px, cy, 0, px, cy, 5 + progress * 5)
+        gr.addColorStop(0, 'rgba(0,212,255,1)')
+        gr.addColorStop(1, 'rgba(0,212,255,0)')
+        ctx.beginPath()
+        ctx.arc(px, cy, 4 + progress * 4, 0, Math.PI * 2)
+        ctx.fillStyle  = gr
+        ctx.shadowColor = 'rgba(0,212,255,0.9)'
+        ctx.shadowBlur  = 12
+        ctx.fill()
+        ctx.shadowBlur = 0
+
+        ctx.font      = 'bold 8px Nunito, sans-serif'
+        ctx.fillStyle = '#ffffff'
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.fillText(l.char, px, cy)
+        ctx.textBaseline = 'alphabetic'
+        ctx.textAlign    = 'left'
+      }
+
+      // Labels
+      const pulse    = 0.55 + Math.sin(state.frame * 0.07) * 0.45
+      const midX     = (LINAC_LEFT + LINAC_RIGHT) / 2
+
+      ctx.globalAlpha = l.ready ? pulse : 0.25
+      ctx.font        = 'bold 9px Space Mono, monospace'
+      ctx.fillStyle   = cyanColor(1)
+      ctx.textAlign   = 'center'
+      ctx.fillText('[ LINAC ]', midX, LINAC_Y_BOT + 15)
+
+      ctx.globalAlpha = l.ready ? (pulse * 0.85) : 0.2
+      ctx.font        = '9px Nunito, sans-serif'
+      ctx.fillStyle   = textColor()
+      ctx.fillText(l.ready ? 'click to accelerate' : '...charging', midX, LINAC_Y_BOT + 27)
+      ctx.textAlign   = 'left'
+      ctx.globalAlpha = 1
+
+      ctx.restore()
+    }
+
+    // ── Projectile ─────────────────────────────────────────────────────────
+
+    function launchProjectile(startX, startY) {
       const btn = document.querySelector('[class*="resumeButton"]')
       if (!btn) return
       const br   = btn.getBoundingClientRect()
       const endX = br.left + br.width  / 2 + rand(-10, 10)
       const endY = br.top  + br.height / 2 + rand(-5, 5)
 
-      // Start position = arm tip at launch moment
-      const angle = state.catapult.angle
-      const startX = CAT_PIVOT_X + Math.cos(angle) * ARM_LENGTH
-      const startY = CAT_PIVOT_Y + Math.sin(angle) * ARM_LENGTH
-
       state.projectile = {
         char: CHARS[Math.floor(Math.random() * CHARS.length)],
         startX, startY,
         x: startX, y: startY,
         endX, endY,
-        cpX: (startX + endX) / 2 + rand(-30, 30),
-        cpY: Math.min(startY, endY) - rand(30, 80),
+        cpX: (startX + endX) / 2 + rand(-60, 60),
+        cpY: Math.min(startY, endY) - rand(60, 140),
         progress: 0,
-        speed: 0.032,
+        speed: 0.028,
         trail: [],
         done: false,
       }
     }
-
-    // ── Projectile ────────────────────────────────────────────────────────────
 
     function updateProjectile() {
       const p = state.projectile
       if (!p || p.done) return
 
       p.trail.push({ x: p.x, y: p.y })
-      if (p.trail.length > 10) p.trail.shift()
+      if (p.trail.length > 12) p.trail.shift()
 
       p.progress = Math.min(p.progress + p.speed, 1)
       const pos  = bezierPoint(p.progress, p.startX, p.startY, p.cpX, p.cpY, p.endX, p.endY)
@@ -354,8 +562,8 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       if (p.progress >= 1) {
         p.done = true
         spawnParticles(p.endX, p.endY)
-        cbRef.current?.()                         // open resume
-        setTimeout(() => reloadCatapult(), 900)   // reload after short delay
+        cbRef.current?.()
+        setTimeout(() => reloadLinac(), 1000)
       }
     }
 
@@ -363,36 +571,34 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       const p = state.projectile
       if (!p || p.done) return
 
-      const accent = themeRef.current === 'dark' ? '#c896ff' : '#46045e'
-      const bright = themeRef.current === 'dark' ? '#e0b0ff' : '#5a0878'
-
       for (let i = 0; i < p.trail.length; i++) {
-        ctx.globalAlpha = (i / p.trail.length) * 0.3
-        ctx.font = '11px Nunito, sans-serif'
-        ctx.fillStyle = accent
+        ctx.globalAlpha = (i / p.trail.length) * 0.35
+        ctx.font        = '10px Nunito, sans-serif'
+        ctx.fillStyle   = cyanColor(1)
         ctx.fillText(p.char, p.trail[i].x, p.trail[i].y)
       }
-      ctx.globalAlpha = 0.95
-      ctx.font = '14px Nunito, sans-serif'
-      ctx.fillStyle = bright
+
+      ctx.globalAlpha  = 1
+      ctx.font         = '13px Nunito, sans-serif'
+      ctx.fillStyle    = cyanColor(1)
+      ctx.shadowColor  = cyanColor(1)
+      ctx.shadowBlur   = 10
       ctx.fillText(p.char, p.x, p.y)
-      ctx.globalAlpha = 1
+      ctx.shadowBlur   = 0
     }
 
-    function reloadCatapult() {
-      const cat      = state.catapult
-      cat.angle      = ARM_LOADED
-      cat.isLoaded   = true
-      cat.launched   = false
-      cat.animating  = false
-      cat.animFrame  = 0
+    function reloadLinac() {
+      const l   = state.linac
+      l.ready   = true
+      l.inTube  = false
+      l.launched = false
       state.projectile = null
     }
 
-    // ── Particles ─────────────────────────────────────────────────────────────
+    // ── Particles ──────────────────────────────────────────────────────────
 
     function spawnParticles(x, y) {
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 8; i++) {
         const angle = rand(0, Math.PI * 2)
         const speed = rand(1.5, 5)
         state.particles.push({
@@ -407,10 +613,9 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
 
     function updateParticles() {
       for (const p of state.particles) {
-        p.x  += p.vx
-        p.y  += p.vy
+        p.x += p.vx; p.y += p.vy
         p.vy += 0.18
-        p.life -= 0.055
+        p.life -= 0.05
       }
       for (let i = state.particles.length - 1; i >= 0; i--) {
         if (state.particles[i].life <= 0) state.particles.splice(i, 1)
@@ -418,112 +623,19 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
     }
 
     function drawParticles() {
-      const accent = themeRef.current === 'dark' ? '#e0b0ff' : '#46045e'
       for (const p of state.particles) {
         ctx.globalAlpha = Math.max(0, p.life)
-        ctx.font = '10px Nunito, sans-serif'
-        ctx.fillStyle = accent
+        ctx.font        = '10px Nunito, sans-serif'
+        ctx.fillStyle   = cyanColor(1)
+        ctx.shadowColor = cyanColor(0.8)
+        ctx.shadowBlur  = 6
         ctx.fillText(p.char, p.x, p.y)
+        ctx.shadowBlur  = 0
       }
       ctx.globalAlpha = 1
     }
 
-    // ── Catapult drawing ──────────────────────────────────────────────────────
-
-    function drawCatapult() {
-      const cat    = state.catapult
-      const angle  = cat.angle
-      const pivotX = CAT_PIVOT_X
-      const pivotY = CAT_PIVOT_Y
-      const baseY  = CAT_BASE_Y
-
-      const tipX = pivotX + Math.cos(angle) * ARM_LENGTH
-      const tipY = pivotY + Math.sin(angle) * ARM_LENGTH
-      const cwX  = pivotX - Math.cos(angle) * CW_LENGTH
-      const cwY  = pivotY - Math.sin(angle) * CW_LENGTH
-
-      const color = textColor()
-      ctx.save()
-      ctx.strokeStyle = color
-      ctx.fillStyle   = color
-      ctx.lineWidth   = 2
-      ctx.lineCap     = 'round'
-
-      // Base
-      ctx.beginPath()
-      ctx.moveTo(pivotX - 36, baseY)
-      ctx.lineTo(pivotX + 36, baseY)
-      ctx.stroke()
-
-      // Wheels
-      ctx.lineWidth = 1.5
-      ;[pivotX - 28, pivotX + 28].forEach(wx => {
-        ctx.beginPath()
-        ctx.arc(wx, baseY, 5, 0, Math.PI * 2)
-        ctx.stroke()
-        // Spokes
-        ctx.beginPath()
-        ctx.moveTo(wx - 4, baseY); ctx.lineTo(wx + 4, baseY)
-        ctx.moveTo(wx, baseY - 4); ctx.lineTo(wx, baseY + 4)
-        ctx.stroke()
-      })
-
-      // Frame legs (angled uprights to pivot)
-      ctx.lineWidth = 2
-      ctx.beginPath()
-      ctx.moveTo(pivotX - 20, baseY)
-      ctx.lineTo(pivotX - 4, pivotY + 4)
-      ctx.moveTo(pivotX + 20, baseY)
-      ctx.lineTo(pivotX + 4, pivotY + 4)
-      ctx.stroke()
-
-      // Arm (counterweight end → tip)
-      ctx.lineWidth = 2.5
-      ctx.beginPath()
-      ctx.moveTo(cwX, cwY)
-      ctx.lineTo(tipX, tipY)
-      ctx.stroke()
-
-      // Pivot dot
-      ctx.beginPath()
-      ctx.arc(pivotX, pivotY, 4, 0, Math.PI * 2)
-      ctx.fill()
-
-      // Counterweight box
-      ctx.fillRect(cwX - 5, cwY - 5, 10, 10)
-
-      // Cup at tip (small half-circle opening away from arm)
-      ctx.lineWidth = 1.5
-      ctx.beginPath()
-      const cupOpen = angle + Math.PI / 2
-      ctx.arc(tipX, tipY, 6, cupOpen, cupOpen + Math.PI)
-      ctx.stroke()
-
-      // Letter sitting in cup (when loaded)
-      if (cat.isLoaded && !cat.launched) {
-        ctx.font = 'bold 11px Nunito, sans-serif'
-        ctx.fillStyle = accentColor(1)
-        ctx.textAlign = 'center'
-        ctx.fillText('R', tipX, tipY - 3)
-        ctx.textAlign = 'left'
-      }
-
-      // Pulsing "click to open resume" label below catapult
-      if (cat.isLoaded) {
-        const pulse = 0.6 + Math.sin(state.frame * 0.07) * 0.4
-        ctx.globalAlpha = pulse
-        ctx.font = '10px Nunito, sans-serif'
-        ctx.fillStyle = color
-        ctx.textAlign = 'center'
-        ctx.fillText('click to open resume', pivotX, baseY + 18)
-        ctx.textAlign = 'left'
-        ctx.globalAlpha = 1
-      }
-
-      ctx.restore()
-    }
-
-    // ── Boot ──────────────────────────────────────────────────────────────────
+    // ── Boot ───────────────────────────────────────────────────────────────
 
     document.fonts.ready.then(() => {
       buildLetters()
@@ -540,26 +652,22 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ── JSX ───────────────────────────────────────────────────────────────────
-
   return (
     <>
       <canvas
         ref={canvasRef}
         style={{ position: 'fixed', top: 0, left: 0, pointerEvents: 'none', zIndex: 999 }}
       />
-      {/* Transparent click target over the catapult drawing */}
       {ready && (
         <div
           onClick={() => fireRef.current?.()}
-          title="Launch!"
+          title="Accelerate particle"
           style={{
             position: 'fixed',
-            // matches CAT_PIVOT_X = 110, click area ~80px wide centered on pivot
-            left: '70px',
-            bottom: '70px',
-            width: '80px',
-            height: '110px',
+            left: '10px',
+            bottom: '80px',
+            width: '210px',
+            height: '65px',
             cursor: 'crosshair',
             zIndex: 1000,
           }}

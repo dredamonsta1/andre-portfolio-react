@@ -12,7 +12,7 @@ const ModalWork = () => {
     <>
       {/* Kept your original button and style reference */}
       <button className={styles.work} onClick={toggle}>
-        WORK
+        |Work⟩
       </button>
 
       <Modal
