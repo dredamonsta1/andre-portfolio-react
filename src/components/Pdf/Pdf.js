@@ -19,7 +19,12 @@ const Pdf = forwardRef((_, ref) => {
       >
         View Resume
       </button>
-      <Modal show={showModal} close={() => setShowModal(false)} title="My Resume">
+      <Modal
+        show={showModal}
+        close={() => setShowModal(false)}
+        title="My Resume"
+        modalStyle={{ width: '90vw', maxWidth: '1000px', height: '90vh' }}
+      >
         <ResumeViewer />
       </Modal>
     </>
