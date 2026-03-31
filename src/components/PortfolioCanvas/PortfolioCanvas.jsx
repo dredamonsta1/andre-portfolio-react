@@ -17,6 +17,13 @@ const CHAIN_K      = 0.28  // spring strength toward dragged letter
 const CHAIN_DECAY  = 0.50  // falloff multiplier per chain step
 const CHAIN_REACH  = 6    // max letters in chain
 
+// Hanging tail letters
+const HANG_COUNT   = 3    // how many trailing letters hang loose at start
+const GRAVITY      = 0.38
+const HANG_SPRING  = 0.14 // spring to left neighbor
+const HANG_REST    = 9    // natural distance between hanging letters (px)
+const UNLOCK_DIST  = 38   // stretch distance that cascades unlock to next letter
+
 const NAME_FONT   = 'bold 24px Nunito, sans-serif'
 const BIO_FONT    = '12px Nunito, sans-serif'
 const EQ_FONT     = '11px Space Mono, monospace'
@@ -120,7 +127,7 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
     window.addEventListener('mouseup', onMouseUp)
 
     const state = {
-      phase: 'scatter',
+      phase: 'idle',
       letters: [],
       projectile: null,
       particles: [],
@@ -177,18 +184,6 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
       l.vx += (targetX - l.x) * SPRING_K
       l.vy += (targetY - l.y) * SPRING_K
 
-      const m = mouseRef.current
-      if (m) {
-        const dx   = l.x - m.x
-        const dy   = l.y - m.y
-        const dist = Math.sqrt(dx*dx + dy*dy)
-        if (dist < REPEL_RADIUS && dist > 0.5) {
-          const f = (1 - dist / REPEL_RADIUS) * REPEL_STR
-          l.vx += (dx / dist) * f
-          l.vy += (dy / dist) * f
-        }
-      }
-
       l.vx *= DAMPING
       l.vy *= DAMPING
       l.x  += l.vx
@@ -230,13 +225,13 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
           const cw = ctx.measureText(char).width
           if (char.trim()) {
             state.letters.push({
-              char, x: rand(0, W), y: rand(-H*.5, H*1.5),
-              vx: rand(-12,12), vy: rand(-12,12),
+              char, x, y: ly,
+              vx: 0, vy: 0,
               tx: x, ty: ly,
               font: NAME_FONT, isName: true,
               alpha: 1, baseY: ly,
               wavePhase: state.letters.length * 0.35,
-              dragging: false,
+              dragging: false, hanging: false,
             })
           }
           x += cw
@@ -254,17 +249,23 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
           const cw = ctx.measureText(char).width
           if (char.trim()) {
             state.letters.push({
-              char, x: rand(0, W), y: rand(-H*.5, H*1.5),
-              vx: rand(-7,7), vy: rand(-7,7),
+              char, x, y: ly,
+              vx: 0, vy: 0,
               tx: x, ty: ly,
               font: BIO_FONT, isName: false,
               alpha: 1, baseY: ly,
               wavePhase: state.letters.length * 0.2,
-              dragging: false,
+              dragging: false, hanging: false,
             })
           }
           x += cw
         }
+      }
+
+      // Mark trailing letters as hanging loose
+      const hangStart = Math.max(0, state.letters.length - HANG_COUNT)
+      for (let i = hangStart; i < state.letters.length; i++) {
+        state.letters[i].hanging = true
       }
 
       // Store position for Schrödinger equation (drawn after scatter)
@@ -392,6 +393,31 @@ export default function PortfolioCanvas({ theme, onResumeOpen }) {
             l.vx += (dragged.x - l.x) * f
             l.vy += (dragged.y - l.y) * f
           }
+        }
+
+        // Hanging letters: gravity + spring to left neighbor, no home spring
+        if (l.hanging) {
+          l.vy += GRAVITY
+          if (i > 0) {
+            const anchor = state.letters[i - 1]
+            const dx = anchor.x - l.x
+            const dy = anchor.y - l.y
+            const d = Math.hypot(dx, dy) || 0.001
+            if (d > HANG_REST) {
+              const f = (d - HANG_REST) * HANG_SPRING
+              l.vx += (dx / d) * f
+              l.vy += (dy / d) * f
+            }
+            // Cascade unlock: stretch too far → left neighbor goes loose too
+            if (!anchor.hanging && !anchor.dragging && d > UNLOCK_DIST) {
+              anchor.hanging = true
+            }
+          }
+          l.vx *= DAMPING
+          l.vy *= DAMPING
+          l.x += l.vx
+          l.y += l.vy
+          continue
         }
 
         const ty = l.isName
