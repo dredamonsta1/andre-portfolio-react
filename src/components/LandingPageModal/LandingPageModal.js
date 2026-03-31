@@ -10,12 +10,13 @@ import "./LandingPageModal.module.css";
 function LandingPageModal(props) {
     return (
         <div className={styles.modalBtnContainer}>
+            <span className={styles.panelLabel}>OBSERVE STATE</span>
             <ModalIntro />
             <ModalWork />
             <ModalAbout />
             <ModalContact />
-        </div>  
-    );      
+        </div>
+    );
 }
     
     

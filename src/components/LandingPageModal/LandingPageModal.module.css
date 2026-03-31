@@ -1,81 +1,92 @@
-/* Shared quantum nav button base */
-.navBtn {
-  background: transparent;
-  color: var(--qm-text, #c8d8ff);
-  border: 1px solid var(--qm-border, rgba(0,212,255,0.18));
-  cursor: pointer;
-  min-width: 7rem;
-  height: 2.6rem;
-  line-height: 2.6rem;
-  padding: 0 1.1rem;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.12rem;
-  text-transform: uppercase;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.navBtn:hover,
-.navBtn:focus {
-  background: rgba(0,212,255,0.07);
-  border-color: var(--qm-cyan, #00d4ff);
-  color: var(--qm-cyan, #00d4ff);
-  box-shadow: 0 0 10px rgba(0,212,255,0.2), inset 0 0 10px rgba(0,212,255,0.05);
-  outline: none;
-}
-
-/* Individual border-radius for the row */
-.intro   { border-radius: 4px 0 0 4px; border-right: none; }
-.work    { border-right: none; }
-.about   { border-right: none; }
-.contact { border-radius: 0 4px 4px 0; }
-
-.intro, .work, .about, .contact {
-  background: transparent;
-  color: var(--qm-text, #c8d8ff);
-  border: 1px solid var(--qm-border, rgba(0,212,255,0.18));
-  cursor: pointer;
-  min-width: 7rem;
-  height: 2.6rem;
-  line-height: 2.6rem;
-  padding: 0 1.1rem;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.12rem;
-  text-transform: uppercase;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.intro:hover,  .intro:focus,
-.work:hover,   .work:focus,
-.about:hover,  .about:focus,
-.contact:hover,.contact:focus {
-  background: rgba(0,212,255,0.07);
-  border-color: var(--qm-cyan, #00d4ff);
-  color: var(--qm-cyan, #00d4ff);
-  box-shadow: 0 0 10px rgba(0,212,255,0.2), inset 0 0 10px rgba(0,212,255,0.05);
-  outline: none;
-  z-index: 1;
-  position: relative;
-}
+/* ── Quantum State Selector Panel ──────────────────────────────────────── */
 
 .modalBtnContainer {
-  padding-left: 7.9%;
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
+  flex-direction: column;
+  z-index: 50;
+  background: rgba(5, 5, 22, 0.6);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+  min-width: 9.5rem;
+  overflow: hidden;
 }
 
-@media (max-width: 565px) {
+.panelLabel {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2rem;
+  color: var(--qm-cyan, #00d4ff);
+  opacity: 0.45;
+  text-align: center;
+  padding: 0.45rem 1rem 0.4rem;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.12);
+  display: block;
+}
+
+/* ── Shared button base (used by .work via this file) ──────────────────── */
+
+.work {
+  background: transparent;
+  color: var(--qm-text, #c8d8ff);
+  border: none;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  cursor: pointer;
+  width: 100%;
+  height: 2.6rem;
+  line-height: 2.6rem;
+  padding: 0 1.1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  text-align: left;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+  display: block;
+}
+
+.work:hover,
+.work:focus {
+  background: rgba(0, 212, 255, 0.07);
+  color: var(--qm-cyan, #00d4ff);
+  box-shadow: inset 3px 0 0 var(--qm-cyan, #00d4ff);
+  outline: none;
+}
+
+/* ── Mobile: drop to bottom-center horizontal bar ──────────────────────── */
+
+@media (max-width: 600px) {
   .modalBtnContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 7.9%;
+    position: fixed;
+    right: auto;
+    top: auto;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    min-width: auto;
+    border-radius: 4px;
   }
 
-  .intro, .work, .about, .contact {
-    border-radius: 4px;
-    border: 1px solid var(--qm-border, rgba(0,212,255,0.18));
-    width: 160px;
-    margin-bottom: 4px;
+  .panelLabel {
+    display: none;
+  }
+
+  .work {
+    border-bottom: none;
+    border-right: 1px solid rgba(0, 212, 255, 0.1);
+    height: 2.4rem;
+    line-height: 2.4rem;
+    font-size: 0.65rem;
+    padding: 0 0.85rem;
+    width: auto;
+  }
+
+  .work:hover,
+  .work:focus {
+    box-shadow: inset 0 -3px 0 var(--qm-cyan, #00d4ff);
   }
 }
