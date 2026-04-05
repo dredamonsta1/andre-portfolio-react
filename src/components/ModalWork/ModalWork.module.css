@@ -14,6 +14,9 @@
   margin: 0 auto;
   padding: 10px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .linkCard {
@@ -72,6 +75,33 @@
 
 .linkCard:hover img {
   transform: scale(1.05);
+}
+
+.npmHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  background: linear-gradient(135deg, var(--qm-bg, #050510), #0d0d2b);
+  border-bottom: 1px solid var(--qm-border, rgba(0, 212, 255, 0.18));
+}
+
+.npmBadge {
+  background: #cb3837;
+  color: #fff;
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.npmPackageName {
+  font-family: "Space Mono", monospace;
+  font-size: 0.78rem;
+  color: var(--qm-cyan, #00d4ff);
+  word-break: break-all;
 }
 
 .textSection {

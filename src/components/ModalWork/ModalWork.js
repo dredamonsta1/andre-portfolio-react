@@ -39,6 +39,22 @@ const ModalWork = () => {
               <p>A social media platform for for creators of the future.</p>
             </div>
           </a>
+
+          <a
+            href="https://www.npmjs.com/package/@numbervault/recovery-flow-sdk?activeTab=versions"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={localStyles.linkCard}
+          >
+            <div className={localStyles.npmHeader}>
+              <span className={localStyles.npmBadge}>npm</span>
+              <span className={localStyles.npmPackageName}>@numbervault/recovery-flow-sdk</span>
+            </div>
+            <div className={localStyles.textSection}>
+              <h3>recovery-flow-sdk</h3>
+              <p>A Node module for recovery flow orchestration — published to npm under @numbervault.</p>
+            </div>
+          </a>
         </div>
       </Modal>
     </>
