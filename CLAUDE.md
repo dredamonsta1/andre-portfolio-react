@@ -190,3 +190,5 @@ The NASA integration will be containerized (Node or FastAPI proxy backend to kee
 - Circular "viewport" frame works well for EPIC Earth feed
 - Font: Space Mono for any data labels, Nunito for UI text
 - Glow effects using `--qm-glow-c` or `--qm-glow-p` on borders
+
+- The screen element will embed a live containerized Galaga game via noVNC iframe (see Galaga repo CLAUDE.md for container details)
