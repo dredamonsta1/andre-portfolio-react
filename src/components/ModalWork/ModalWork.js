@@ -23,19 +23,19 @@ const ModalWork = () => {
       >
         <div className={localStyles.container}>
           <a
-            href="https://vedioz.me/"
+            href="https://onstanbox.com/"
             target="_blank"
             rel="noopener noreferrer"
             className={localStyles.linkCard}
           >
             <div className={localStyles.imageWrapper}>
-              <img src={arsparThumb} alt="Vedioz.me" />
+              <img src={arsparThumb} alt="onstanbox.com" />
               <div className={localStyles.overlay}>
                 <span>VISIT SITE</span>
               </div>
             </div>
             <div className={localStyles.textSection}>
-              <h3>vedioz.me</h3>
+              <h3>onstanbox.com</h3>
               <p>A social media platform for for creators of the future.</p>
             </div>
           </a>
